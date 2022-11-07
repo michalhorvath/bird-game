@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class SaveLoadSystem
 {
-    private static string playerDataPath = Application.dataPath + "/PlayerData.json";
-    private static string debugLogPath = Application.dataPath + "/debug.log";
+    private static string playerDataPath = Application.persistentDataPath + "/PlayerData.json";
+    private static string debugLogPath = Application.persistentDataPath + "/debug.log";
 
 
     public static void savePlayerData(PlayerData playerData){
