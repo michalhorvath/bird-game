@@ -24,6 +24,8 @@ public class TempBirdController : MonoBehaviour
 
         BirdTimerText.text = "";
         CoinsText.text = $"Coins: {playerData.coins}";
+
+        NotificationManager.init();
     }
 
     // Update is called once per frame
@@ -34,7 +36,8 @@ public class TempBirdController : MonoBehaviour
 
     public void dispatchBird(){
         if (!isOut) {
-            StartCoroutine(DispatchBirdCoroutine(5f + playerData.coins/100f));
+            StartCoroutine(DispatchBirdCoroutine(getBirdAwayTime()));
+            NotificationManager.scheduleAndroidNotification(getBirdAwayTime());
         }
     }
 
@@ -53,6 +56,10 @@ public class TempBirdController : MonoBehaviour
     void getLoot(){
         playerData.coins += 100;
         CoinsText.text = $"Coins: {playerData.coins}";
+    }
+
+    float getBirdAwayTime(){
+        return 5f + playerData.coins/100f;
     }
 
     IEnumerator DispatchBirdCoroutine(float seconds){
