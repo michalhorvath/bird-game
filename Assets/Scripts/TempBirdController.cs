@@ -26,6 +26,7 @@ public class TempBirdController : MonoBehaviour
         CoinsText.text = $"Coins: {playerData.coins}";
 
         NotificationManager.init();
+        NotificationManager.cancelAllNotifications();
     }
 
     // Update is called once per frame

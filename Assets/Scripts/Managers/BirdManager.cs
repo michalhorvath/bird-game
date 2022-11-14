@@ -33,8 +33,10 @@ public class BirdManager : MonoBehaviour
 
         switch (newState){
             case BirdState.Ready:
+                makeBirdReady();
                 break;
             case BirdState.Away:
+                makeBirdAway();
                 break;
             case BirdState.LootReady:
                 break;
@@ -46,7 +48,16 @@ public class BirdManager : MonoBehaviour
 
         OnBirdStateChanged?.Invoke(newState);
     }
+        
+    private void makeBirdReady(){
+        //TempBirdController.showBird();
+    }
+
+    private void makeBirdAway(){
+        //TempBirdController.hideBird();
+    }
 }
+
 
 public enum BirdState {
     Ready,

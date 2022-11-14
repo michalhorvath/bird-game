@@ -17,6 +17,10 @@ public class NotificationManager
         AndroidNotificationCenter.RegisterNotificationChannel(channel);
     }
 
+    public static void cancelAllNotifications(){
+        AndroidNotificationCenter.CancelAllNotifications();
+    }
+
     public static void scheduleAndroidNotification(float seconds){
         var notification = new AndroidNotification();
         notification.Title = "Bird has arrived!";
