@@ -12,20 +12,28 @@ public class BirdManager : MonoBehaviour
     public BirdState State;
 
     public static event Action<BirdState> OnBirdStateChanged;
+    
+    public static BirdManager Instance;
 
     void Awake()
     {
-        
+       Instance = this; 
     }
 
     void Start()
     {
-       OnBirdStateChanged(BirdState.Ready); 
+       //OnBirdStateChanged(BirdState.Ready); 
     }
 
     void Update()
     {
-        
+       //TODO: kontroluj cas ak bird away 
+    }
+
+    void OnApplicationFocus(bool hasFocus){
+        //TODO: resetuj timer ak treba pripadne sprav loot ready
+        if (hasFocus) {
+        }
     }
 
     public void UpdateBirdState(BirdState newState){
