@@ -8,6 +8,8 @@ public class PlayerDataManager : MonoBehaviour
 
     public static PlayerDataManager Instance;
 
+    private const float AUTOSAVE_INTERVAL = 10f;
+
     void Awake() {
         Instance = this;
         load();
@@ -16,7 +18,7 @@ public class PlayerDataManager : MonoBehaviour
     void Start()
     {
         BirdManager.OnBirdStateChanged += OnBirdStateChanged;
-        print(playerData);
+        StartCoroutine(AutoSaver());
     }
 
     void OnDestroy(){
@@ -41,5 +43,12 @@ public class PlayerDataManager : MonoBehaviour
 
     void OnBirdStateChanged(BirdState birdState){
         save();
+    }
+
+    IEnumerator AutoSaver(){
+        while(true){
+            save();
+            yield return new WaitForSecondsRealtime(AUTOSAVE_INTERVAL);
+        }
     }
 }

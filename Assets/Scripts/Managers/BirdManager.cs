@@ -9,20 +9,20 @@ public class BirdManager : MonoBehaviour
     [SerializeField] private GameObject bird;
     [SerializeField] private TextMeshProUGUI birdTimerText;
 
-    public BirdState State;
+    public BirdState state;
 
     public static event Action<BirdState> OnBirdStateChanged;
     
-    public static BirdManager Instance;
+    public static BirdManager instance;
 
     void Awake()
     {
-       Instance = this; 
+       instance = this; 
     }
 
     void Start()
     {
-       //OnBirdStateChanged(BirdState.Ready); 
+        initBirdState();
     }
 
     void Update()
@@ -37,40 +37,57 @@ public class BirdManager : MonoBehaviour
     }
 
     public void UpdateBirdState(BirdState newState){
-        State = newState;
+        state = newState;
 
         switch (newState){
             case BirdState.Ready:
                 makeBirdReady();
                 break;
-            case BirdState.Away:
-                makeBirdAway();
+            case BirdState.Out:
+                makeBirdOut();
                 break;
-            case BirdState.LootReady:
-                break;
-            case BirdState.BeingPetted:
-                break;
-            case BirdState.BeingTrained:
+            case BirdState.GotLoot:
                 break;
         }
 
         OnBirdStateChanged?.Invoke(newState);
     }
+
+    public void sendBirdOut(){
+        if (state == BirdState.Ready){
+            PlayerDataManager.Instance.playerData.birdArrivalTime = getBirdArrivalTime();
+            UpdateBirdState(BirdState.Out);
+        }
+    } 
+
+    private DateTimeOffset getBirdArrivalTime(){
+        // TODO: prerobit mimo BirdManager cez novu helper class scheduler
+        float birdAwayTime = 100f;
+        DateTimeOffset birdArrivalTime = DateTimeOffset.Now.AddSeconds(birdAwayTime);
+        return birdArrivalTime;
+    }
         
     private void makeBirdReady(){
-        //TempBirdController.showBird();
     }
 
-    private void makeBirdAway(){
-        //TempBirdController.hideBird();
+    private void makeBirdOut(){
+    }
+
+    private void initBirdState(){
+        DateTimeOffset birdArrivalTime = PlayerDataManager.Instance.playerData.birdArrivalTime;
+        double seconds = (birdArrivalTime - DateTimeOffset.Now).TotalSeconds;
+        if (seconds > 0){
+            UpdateBirdState(BirdState.Out);
+        } else {
+            UpdateBirdState(BirdState.Ready);
+        }
+        // TODO: co ak je loot ready?
     }
 }
 
 
 public enum BirdState {
     Ready,
-    Away,
-    LootReady,
-    BeingPetted,
-    BeingTrained
+    Out,
+    GotLoot
 }

@@ -21,6 +21,6 @@ public class GameManager : MonoBehaviour
     }
 
     void OnApplicationFocus(bool hasFocus){
-        print("has focus: " + hasFocus);
+
     }
 }

@@ -37,8 +37,12 @@ public class TempBirdController : MonoBehaviour
 
     public void dispatchBird(){
         if (!isOut) {
-            StartCoroutine(DispatchBirdCoroutine(getBirdAwayTime()));
-            NotificationManager.scheduleAndroidNotification(getBirdAwayTime());
+            float birdAwayTime = getBirdAwayTime();
+            DateTimeOffset birdArrivalTime = DateTimeOffset.Now.AddSeconds(birdAwayTime);
+            playerData.birdArrivalTime = birdArrivalTime;
+
+            StartCoroutine(DispatchBirdCoroutine(birdAwayTime));
+            NotificationManager.scheduleAndroidNotification(birdAwayTime);
         }
     }
 
