@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class BirdController : MonoBehaviour
 {
+    void Awake(){
+        BirdManager.OnBirdStateChanged += OnBirdStateChanged;
+        showBird();
+    }
     
     void Start()
     {
-        BirdManager.OnBirdStateChanged += OnBirdStateChanged;     
     }
 
     void OnDestroy(){
@@ -31,10 +34,10 @@ public class BirdController : MonoBehaviour
     }
 
     private void showBird(){
-        transform.position += new Vector3(1000f, 0.0f);
+        gameObject.SetActive(true);
     }
 
     private void hideBird(){
-        transform.position += new Vector3(-1000f, 0.0f);
+        gameObject.SetActive(false);
     }
 }
