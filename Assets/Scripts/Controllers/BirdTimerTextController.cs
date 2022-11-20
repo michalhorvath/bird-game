@@ -58,6 +58,8 @@ public class BirdTimerTextController : MonoBehaviour
             yield return new WaitForSeconds(1f);
             seconds--;
         }
-        BirdTimerText.text = "00:00";
+        if (BirdTimerText.text != "") {
+            BirdTimerText.text = "00:00";
+        }
     }
 }

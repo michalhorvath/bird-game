@@ -18,6 +18,8 @@ public class PlayerDataManager : MonoBehaviour
     void Start()
     {
         BirdManager.OnBirdStateChanged += OnBirdStateChanged;
+        LootManager.OnLootCollected += OnLootCollected;
+
         StartCoroutine(AutoSaver());
     }
 
@@ -42,6 +44,10 @@ public class PlayerDataManager : MonoBehaviour
     }
 
     void OnBirdStateChanged(BirdState birdState){
+        save();
+    }
+
+    void OnLootCollected(string s){
         save();
     }
 

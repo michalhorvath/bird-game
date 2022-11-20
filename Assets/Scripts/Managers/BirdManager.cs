@@ -6,9 +6,6 @@ using TMPro;
 
 public class BirdManager : MonoBehaviour
 {
-    [SerializeField] private GameObject bird;
-    [SerializeField] private TextMeshProUGUI birdTimerText;
-
     public BirdState state;
 
     public static event Action<BirdState> OnBirdStateChanged;
@@ -27,7 +24,11 @@ public class BirdManager : MonoBehaviour
 
     void Update()
     {
-       //TODO: kontroluj cas ak bird away 
+       // checks if it's time for bird to arrive
+       DateTimeOffset birdArrivalTime = PlayerDataManager.Instance.playerData.birdArrivalTime;
+       if (state == BirdState.Out && birdArrivalTime < DateTimeOffset.Now){
+           UpdateBirdState(BirdState.Ready);
+       }
     }
 
     void OnApplicationFocus(bool hasFocus){
@@ -62,7 +63,7 @@ public class BirdManager : MonoBehaviour
 
     private DateTimeOffset getBirdArrivalTime(){
         // TODO: prerobit mimo BirdManager cez novu helper class scheduler
-        float birdAwayTime = 100f;
+        float birdAwayTime = 20f;
         DateTimeOffset birdArrivalTime = DateTimeOffset.Now.AddSeconds(birdAwayTime);
         return birdArrivalTime;
     }
