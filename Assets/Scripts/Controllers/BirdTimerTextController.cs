@@ -8,10 +8,13 @@ public class BirdTimerTextController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI BirdTimerText;
 
-    void Start()
-    {
+    void Awake(){
         BirdManager.OnBirdStateChanged += OnBirdStateChanged;
         hideTimer();
+    }
+
+    void Start()
+    {
     }
 
     void OnDestroy()
@@ -40,21 +43,21 @@ public class BirdTimerTextController : MonoBehaviour
     }
 
     private void startTimer(){
-        BirdTimerText.text = "12:34";
-        initTimer();
+        initCountdown();
     }
 
-    private void initTimer(){
+    private void initCountdown(){
         DateTimeOffset birdArrivalTime = PlayerDataManager.Instance.playerData.birdArrivalTime;
-        double seconds = (birdArrivalTime - DateTimeOffset.Now).TotalSeconds;
+        float seconds = Mathf.Floor((float)(birdArrivalTime - DateTimeOffset.Now).TotalSeconds);
         StartCoroutine(timerCountdownCoroutine(seconds));
     }
 
-    private IEnumerator timerCountdownCoroutine(double seconds){
+    private IEnumerator timerCountdownCoroutine(float seconds){
         while(seconds > 0){
-            BirdTimerText.text = $"{seconds / 60:00}:{seconds % 60:00}";
+            BirdTimerText.text = $"{Mathf.Floor(seconds / 60):00}:{Mathf.Floor(seconds % 60):00}";
             yield return new WaitForSeconds(1f);
             seconds--;
         }
+        BirdTimerText.text = "00:00";
     }
 }
