@@ -1,0 +1,52 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/stylesheet.uss?fileID=7433441132597879392&amp;guid=5153e26b87e5d0451bea3abcc3ccf9e3&amp;type=3#stylesheet" />
+    <ui:VisualElement name="HomeScreen" style="flex-grow: 1; justify-content: space-between; display: flex;">
+        <ui:VisualElement name="HomeTopBar" style="flex-direction: row; justify-content: flex-start;">
+            <ui:Button text="Coins: 2100" display-tooltip-when-elided="true" name="HomeCoinsButton" class="button smallButton" />
+            <ui:Button text="Gems: 10" display-tooltip-when-elided="true" name="HomeGemsButton" class="button smallButton" />
+        </ui:VisualElement>
+        <ui:Button display-tooltip-when-elided="true" name="BirdMenuOpenButton" style="position: absolute; width: 60%; height: 30%; justify-content: flex-start; margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom: auto; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px; left: 20%; top: 35%; background-color: rgba(88, 88, 88, 0);" />
+        <ui:VisualElement name="BirdMenu" style="display: none;">
+            <ui:VisualElement style="flex-direction: row; justify-content: space-around; flex-wrap: nowrap; visibility: visible;">
+                <ui:Button text="Pet" display-tooltip-when-elided="true" name="BirdPetButton" class="button smallButton" />
+                <ui:Button text="Send" display-tooltip-when-elided="true" name="BirdSendButton" class="button smallButton" />
+                <ui:Button text="Train" display-tooltip-when-elided="true" name="BirdTrainButton" class="button smallButton" />
+            </ui:VisualElement>
+            <ui:Button text="Close" display-tooltip-when-elided="true" name="BirdMenuCloseButton" class="button smallButton" style="width: auto; background-color: rgba(165, 60, 55, 255);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="HomeBottomBar" style="justify-content: space-between; flex-direction: row;">
+            <ui:Button text="Shop" display-tooltip-when-elided="true" name="HomeShopButton" class="button smallButton" />
+            <ui:Button text="Menu" display-tooltip-when-elided="true" name="HomeMenuButton" class="button smallButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="MenuScreen" class="hideBackground" style="flex-grow: 1; display: none; justify-content: center; align-items: center;">
+        <ui:Label tabindex="-1" text="&lt;u&gt;Menu&lt;/u&gt; " display-tooltip-when-elided="true" name="MenuLabel" enable-rich-text="true" class="bigLabel" />
+        <ui:Button text="Settings" display-tooltip-when-elided="true" name="MenuSettingsButton" class="button bigButton" />
+        <ui:Button text="Photo" display-tooltip-when-elided="true" name="MenuPhotoButton" class="button bigButton" />
+        <ui:Button text="Bird Album" display-tooltip-when-elided="true" name="MenuAlbumButton" class="button bigButton" />
+        <ui:Button text="Item Catalog" display-tooltip-when-elided="true" name="MenuCatalogButton" class="button bigButton" />
+        <ui:Button text="X" display-tooltip-when-elided="true" name="MenuBackButton" enable-rich-text="true" class="button backButton" />
+    </ui:VisualElement>
+    <ui:VisualElement name="SettingsScreen" class="hideBackground" style="flex-grow: 1; display: none; justify-content: center; align-items: center;">
+        <ui:Label tabindex="-1" text="&lt;u&gt;Settings&lt;/u&gt; " display-tooltip-when-elided="true" name="SettingsLabel" enable-rich-text="true" class="bigLabel" />
+        <ui:Button text="Gyro" display-tooltip-when-elided="true" name="SettingsGyroButton" class="button bigButton" />
+        <ui:Button text="Music" display-tooltip-when-elided="true" name="SettingsMusicButton" class="button bigButton" />
+        <ui:Button text="Notifications" display-tooltip-when-elided="true" name="SettingsNotificationButton" enable-rich-text="false" class="button bigButton" />
+        <ui:Button text="X" display-tooltip-when-elided="true" name="SettingsBackButton" enable-rich-text="true" class="button backButton" />
+    </ui:VisualElement>
+    <ui:VisualElement name="GemsScreen" class="hideBackground" style="flex-grow: 1; display: none; justify-content: center; align-items: center;">
+        <ui:Label tabindex="-1" text="&lt;u&gt;Gem Exchange&lt;/u&gt; " display-tooltip-when-elided="true" name="GemsLabel" enable-rich-text="true" class="bigLabel" />
+        <ui:Button text="Gems =&gt; Coins" display-tooltip-when-elided="true" name="GemsG2CButton" class="button bigButton" />
+        <ui:Button text="Coins =&gt; Gems" display-tooltip-when-elided="true" name="GemsC2GButton" class="button bigButton" />
+        <ui:Button text="Real Money =&gt; Gems" display-tooltip-when-elided="true" name="GemsMoneyButton" enable-rich-text="false" class="button bigButton" />
+        <ui:Button text="X" display-tooltip-when-elided="true" name="GemsBackButton" enable-rich-text="true" class="button backButton" />
+    </ui:VisualElement>
+    <ui:VisualElement name="ShopScreen" class="hideBackground" style="flex-grow: 1; display: none; justify-content: center; align-items: center;">
+        <ui:Label tabindex="-1" text="&lt;u&gt;The Shop&lt;/u&gt; " display-tooltip-when-elided="true" name="ShopLabel" enable-rich-text="true" class="bigLabel" />
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:Button text="Bird" display-tooltip-when-elided="true" name="ShopBirdButton" class="button bigButton" style="width: 400px; height: 400px;" />
+            <ui:Button text="Customize" display-tooltip-when-elided="true" name="ShopCustomizeButton" class="button bigButton" style="width: 400px; height: 400px;" />
+        </ui:VisualElement>
+        <ui:Button text="X" display-tooltip-when-elided="true" name="ShopBackButton" enable-rich-text="true" class="button backButton" />
+    </ui:VisualElement>
+</ui:UXML>
