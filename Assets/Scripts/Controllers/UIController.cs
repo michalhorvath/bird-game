@@ -32,6 +32,8 @@ public class UIController : MonoBehaviour
     private Button birdMenuCloseButton;
     private Button birdMenuOpenButton;
 
+    private Label homeBirdTimer;
+
     void Awake() {
         document = GetComponent<UIDocument>();
 
@@ -60,9 +62,14 @@ public class UIController : MonoBehaviour
         birdMenuCloseButton = document.rootVisualElement.Q<Button>("BirdMenuCloseButton");
         birdMenuOpenButton = document.rootVisualElement.Q<Button>("BirdMenuOpenButton");
 
+        homeBirdTimer = document.rootVisualElement.Q<Label>("HomeBirdTimer");
+
         homeMenuButton.clicked += () => {
             homeScreen.style.display = DisplayStyle.None;
             menuScreen.style.display = DisplayStyle.Flex;
+
+            birdMenuOpenButton.style.display = DisplayStyle.Flex;
+            birdMenu.style.display = DisplayStyle.None;
         };
 
         menuBackButton.clicked += () => {
@@ -83,11 +90,17 @@ public class UIController : MonoBehaviour
         homeGemsButton.clicked += () => {
             homeScreen.style.display = DisplayStyle.None;
             gemsScreen.style.display = DisplayStyle.Flex;
+
+            birdMenuOpenButton.style.display = DisplayStyle.Flex;
+            birdMenu.style.display = DisplayStyle.None;
         };
 
         homeCoinsButton.clicked += () => {
             homeScreen.style.display = DisplayStyle.None;
             gemsScreen.style.display = DisplayStyle.Flex;
+
+            birdMenuOpenButton.style.display = DisplayStyle.Flex;
+            birdMenu.style.display = DisplayStyle.None;
         };
 
         gemsBackButton.clicked += () => {
@@ -98,6 +111,9 @@ public class UIController : MonoBehaviour
         homeShopButton.clicked += () => {
             homeScreen.style.display = DisplayStyle.None;
             shopScreen.style.display = DisplayStyle.Flex;
+
+            birdMenuOpenButton.style.display = DisplayStyle.Flex;
+            birdMenu.style.display = DisplayStyle.None;
         };
 
         shopBackButton.clicked += () => {
@@ -114,5 +130,30 @@ public class UIController : MonoBehaviour
             birdMenuOpenButton.style.display = DisplayStyle.Flex;
             birdMenu.style.display = DisplayStyle.None;
         };
+
+
+
+        birdSendButton.clicked += () => {
+            BirdManager.instance.sendBirdOut();
+        };
+
+
+        BirdManager.OnBirdStateChanged += OnBirdStateChanged;
     }
+
+    private void OnBirdStateChanged(BirdState birdState){
+        switch (birdState){
+            case BirdState.Ready:
+                birdMenu.style.display = DisplayStyle.None;
+                homeBirdTimer.style.display = DisplayStyle.None;
+                birdMenuOpenButton.style.display = DisplayStyle.Flex;
+                break;
+            case BirdState.Out:
+                birdMenu.style.display = DisplayStyle.None;
+                homeBirdTimer.style.display = DisplayStyle.Flex;
+                birdMenuOpenButton.style.display = DisplayStyle.None;
+                break;
+         }
+     }
+
 }

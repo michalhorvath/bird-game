@@ -2,29 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UIElements;
 
 public class BirdTimerTextController : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI BirdTimerText;
+    private UIDocument document;
+    private Label homeBirdTimer;
 
     void Awake(){
+        document = GetComponent<UIDocument>();
+        homeBirdTimer = document.rootVisualElement.Q<Label>("HomeBirdTimer");
+
         BirdManager.OnBirdStateChanged += OnBirdStateChanged;
         hideTimer();
-    }
-
-    void Start()
-    {
     }
 
     void OnDestroy()
     {
         BirdManager.OnBirdStateChanged -= OnBirdStateChanged;
-    }
-
-    void Update()
-    {
-        
     }
 
     private void OnBirdStateChanged(BirdState birdState){
@@ -39,7 +34,7 @@ public class BirdTimerTextController : MonoBehaviour
     }
 
     private void hideTimer(){
-        BirdTimerText.text = "";
+        homeBirdTimer.text = "";
     }
 
     private void startTimer(){
@@ -54,12 +49,12 @@ public class BirdTimerTextController : MonoBehaviour
 
     private IEnumerator timerCountdownCoroutine(float seconds){
         while(seconds > 0){
-            BirdTimerText.text = $"{Mathf.Floor(seconds / 60):00}:{Mathf.Floor(seconds % 60):00}";
+            homeBirdTimer.text = $"{Mathf.Floor(seconds / 60):00}:{Mathf.Floor(seconds % 60):00}";
             yield return new WaitForSeconds(1f);
             seconds--;
         }
-        if (BirdTimerText.text != "") {
-            BirdTimerText.text = "00:00";
+        if (homeBirdTimer.text != "") {
+            homeBirdTimer.text = "00:00";
         }
     }
 }

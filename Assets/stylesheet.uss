@@ -5,11 +5,11 @@
     margin-right: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: rgba(165, 165, 55, 255);
+    background-color: rgb(165, 165, 55);
     -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=20ebfd8a77b71b29c912f0db46e6df84&type=3#NotInter-Regular');
     font-size: 50px;
     -unity-font-style: bold;
-    color: rgba(0, 0, 0, 255);
+    color: rgb(0, 0, 0);
     -unity-text-align: middle-center;
     border-left-width: 5px;
     border-right-width: 5px;
@@ -19,10 +19,10 @@
     border-bottom-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
-    border-left-color: rgba(0, 0, 0, 255);
-    border-right-color: rgba(0, 0, 0, 255);
-    border-top-color: rgba(0, 0, 0, 255);
-    border-bottom-color: rgba(0, 0, 0, 255);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
 }
 
 .bigButton {
@@ -32,7 +32,7 @@
     margin-bottom: 20px;
     height: 180px;
     width: 600px;
-    background-color: rgba(165, 165, 55, 255);
+    background-color: rgb(165, 165, 55);
     border-left-width: 7px;
     border-right-width: 7px;
     border-top-width: 7px;
@@ -43,17 +43,17 @@
     border-bottom-right-radius: 40px;
     -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=20ebfd8a77b71b29c912f0db46e6df84&type=3#NotInter-Regular');
     font-size: 50px;
-    color: rgba(0, 0, 0, 255);
+    color: rgb(0, 0, 0);
     -unity-text-align: middle-center;
     -unity-font-style: bold;
-    border-left-color: rgba(0, 0, 0, 255);
-    border-right-color: rgba(0, 0, 0, 255);
-    border-top-color: rgba(0, 0, 0, 255);
-    border-bottom-color: rgba(0, 0, 0, 255);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
 }
 
 .backButton {
-    background-color: rgba(165, 60, 55, 255);
+    background-color: rgb(165, 60, 55);
     width: 180px;
     height: 180px;
     font-size: 60px;
@@ -70,16 +70,16 @@
     border-bottom-right-radius: 40px;
     -unity-font-style: bold;
     -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=20ebfd8a77b71b29c912f0db46e6df84&type=3#NotInter-Regular');
-    color: rgba(0, 0, 0, 255);
-    border-left-color: rgba(0, 0, 0, 255);
-    border-right-color: rgba(0, 0, 0, 255);
-    border-top-color: rgba(0, 0, 0, 255);
-    border-bottom-color: rgba(0, 0, 0, 255);
+    color: rgb(0, 0, 0);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
 }
 
 .bigLabel {
     -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=20ebfd8a77b71b29c912f0db46e6df84&type=3#NotInter-Regular');
-    color: rgba(0, 0, 0, 255);
+    color: rgb(0, 0, 0);
     -unity-text-align: middle-center;
     font-size: 100px;
     margin-left: 20px;
@@ -90,4 +90,40 @@
 
 .hideBackground {
     background-color: rgba(55, 154, 165, 0.8);
+}
+
+.popupBackground {
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.timerLabel {
+    -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=20ebfd8a77b71b29c912f0db46e6df84&type=3#NotInter-Regular');
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    font-size: 140px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: none;
 }
