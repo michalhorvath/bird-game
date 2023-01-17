@@ -1,35 +1,49 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDataManager : MonoBehaviour
 {
-    public PlayerData playerData;
+    private PlayerData playerData;
 
     public static PlayerDataManager Instance;
 
-    private const float AUTOSAVE_INTERVAL = 10f;
+    public static event Action<string> OnPlayerDataChanged;
+
+    public static int coins {
+        get {
+            return Instance.playerData.coins;
+        }
+        set {
+            Instance.playerData.coins = value;
+            Instance.playerDataChanged();
+        }
+    }
+
+    public static int gems {
+        get {
+            return Instance.playerData.gems;
+        }
+        set {
+            Instance.playerData.gems = value;
+            Instance.playerDataChanged();
+        }
+    }
+
+    public static DateTimeOffset birdArrivalTime {
+        get {
+            return Instance.playerData.birdArrivalTime;
+        }
+        set {
+            Instance.playerData.birdArrivalTime = value;
+            Instance.playerDataChanged();
+        }
+    }
 
     void Awake() {
         Instance = this;
         load();
-    }
-
-    void Start()
-    {
-        BirdManager.OnBirdStateChanged += OnBirdStateChanged;
-        LootManager.OnLootCollected += OnLootCollected;
-
-        StartCoroutine(AutoSaver());
-    }
-
-    void OnDestroy(){
-        BirdManager.OnBirdStateChanged -= OnBirdStateChanged;
-    }
-
-    void Update()
-    {
-        
     }
 
     void load(){
@@ -43,18 +57,8 @@ public class PlayerDataManager : MonoBehaviour
         SaveLoadSystem.savePlayerData(playerData);
     }
 
-    void OnBirdStateChanged(BirdState birdState){
+    void playerDataChanged(){
+        OnPlayerDataChanged?.Invoke("ignore");
         save();
-    }
-
-    void OnLootCollected(string s){
-        save();
-    }
-
-    IEnumerator AutoSaver(){
-        while(true){
-            save();
-            yield return new WaitForSecondsRealtime(AUTOSAVE_INTERVAL);
-        }
     }
 }

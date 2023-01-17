@@ -25,7 +25,7 @@ public class BirdManager : MonoBehaviour
     void Update()
     {
        // checks if it's time for bird to arrive
-       DateTimeOffset birdArrivalTime = PlayerDataManager.Instance.playerData.birdArrivalTime;
+       DateTimeOffset birdArrivalTime = PlayerDataManager.birdArrivalTime;
        if (state == BirdState.Out && birdArrivalTime < DateTimeOffset.Now){
            UpdateBirdState(BirdState.Ready);
        }
@@ -50,13 +50,12 @@ public class BirdManager : MonoBehaviour
             case BirdState.GotLoot:
                 break;
         }
-
         OnBirdStateChanged?.Invoke(newState);
     }
 
     public void sendBirdOut(){
         if (state == BirdState.Ready){
-            PlayerDataManager.Instance.playerData.birdArrivalTime = getBirdArrivalTime();
+            PlayerDataManager.birdArrivalTime = getBirdArrivalTime();
             UpdateBirdState(BirdState.Out);
         }
     } 
@@ -75,7 +74,7 @@ public class BirdManager : MonoBehaviour
     }
 
     private void initBirdState(){
-        DateTimeOffset birdArrivalTime = PlayerDataManager.Instance.playerData.birdArrivalTime;
+        DateTimeOffset birdArrivalTime = PlayerDataManager.birdArrivalTime;
         double seconds = (birdArrivalTime - DateTimeOffset.Now).TotalSeconds;
         if (seconds > 0){
             UpdateBirdState(BirdState.Out);

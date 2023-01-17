@@ -9,10 +9,10 @@ public class LootManager : MonoBehaviour
 
     public static event Action<string> OnLootCollected;
 
-    public static LootManager instance;
+    public static LootManager Instance;
 
     void Awake(){
-        instance = this;
+        Instance = this;
         hideGetLootButton();
     }
 
@@ -26,8 +26,8 @@ public class LootManager : MonoBehaviour
     }
 
     public void getLoot(){
-        PlayerDataManager.Instance.playerData.coins += 100;
-        OnLootCollected?.Invoke("random_text");
+        PlayerDataManager.coins += 100;
+        OnLootCollected?.Invoke("ignore");
     }
 
     private void hideGetLootButton(){

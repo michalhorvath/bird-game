@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerData
 {
     public int coins;
+    public int gems;
 
     [SerializeField] private long _birdArrivalTime;
     public DateTimeOffset birdArrivalTime {
@@ -19,6 +20,7 @@ public class PlayerData
 
     public PlayerData(){
         this.coins = 0;
+        this.gems = 0;
         this.birdArrivalTime = DateTimeOffset.MinValue;
     }
 }

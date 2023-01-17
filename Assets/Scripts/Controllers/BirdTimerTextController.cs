@@ -42,7 +42,7 @@ public class BirdTimerTextController : MonoBehaviour
     }
 
     private void initCountdown(){
-        DateTimeOffset birdArrivalTime = PlayerDataManager.Instance.playerData.birdArrivalTime;
+        DateTimeOffset birdArrivalTime = PlayerDataManager.birdArrivalTime;
         float seconds = Mathf.Floor((float)(birdArrivalTime - DateTimeOffset.Now).TotalSeconds);
         StartCoroutine(timerCountdownCoroutine(seconds));
     }
