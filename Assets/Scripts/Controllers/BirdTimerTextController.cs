@@ -9,23 +9,32 @@ public class BirdTimerTextController : MonoBehaviour
     private UIDocument document;
     private Label homeBirdTimer;
 
+    private bool isRunning;
+
     void Awake(){
         document = GetComponent<UIDocument>();
         homeBirdTimer = document.rootVisualElement.Q<Label>("HomeBirdTimer");
 
         BirdManager.OnBirdStateChanged += OnBirdStateChanged;
-        hideTimer();
+        stopTimer();
     }
 
-    void OnDestroy()
-    {
+    void OnDestroy() {
         BirdManager.OnBirdStateChanged -= OnBirdStateChanged;
+    }
+
+    void Update() {
+        if (isRunning) {
+            DateTimeOffset birdArrivalTime = PlayerDataManager.birdArrivalTime;
+            float seconds = Mathf.Floor((float)(birdArrivalTime - DateTimeOffset.Now).TotalSeconds);
+            homeBirdTimer.text = $"{Mathf.Floor(seconds / 60):00}:{Mathf.Floor(seconds % 60):00}";
+        }
     }
 
     private void OnBirdStateChanged(BirdState birdState){
         switch (birdState){
             case BirdState.Ready:
-                hideTimer();
+                stopTimer();
                 break;
             case BirdState.Out:
                 startTimer();
@@ -33,28 +42,11 @@ public class BirdTimerTextController : MonoBehaviour
         }
     }
 
-    private void hideTimer(){
-        homeBirdTimer.text = "";
+    private void stopTimer(){
+        isRunning = false;
     }
 
     private void startTimer(){
-        initCountdown();
-    }
-
-    private void initCountdown(){
-        DateTimeOffset birdArrivalTime = PlayerDataManager.birdArrivalTime;
-        float seconds = Mathf.Floor((float)(birdArrivalTime - DateTimeOffset.Now).TotalSeconds);
-        StartCoroutine(timerCountdownCoroutine(seconds));
-    }
-
-    private IEnumerator timerCountdownCoroutine(float seconds){
-        while(seconds > 0){
-            homeBirdTimer.text = $"{Mathf.Floor(seconds / 60):00}:{Mathf.Floor(seconds % 60):00}";
-            yield return new WaitForSeconds(1f);
-            seconds--;
-        }
-        if (homeBirdTimer.text != "") {
-            homeBirdTimer.text = "00:00";
-        }
+        isRunning = true;
     }
 }
