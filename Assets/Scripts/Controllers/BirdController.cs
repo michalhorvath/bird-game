@@ -9,16 +9,14 @@ public class BirdController : MonoBehaviour
         showBird();
     }
     
-    void Start()
-    {
+    void Start(){
     }
 
     void OnDestroy(){
         BirdManager.OnBirdStateChanged -= OnBirdStateChanged;
     }
 
-    void Update()
-    {
+    void Update(){
         
     }
 
@@ -29,6 +27,9 @@ public class BirdController : MonoBehaviour
                 break;
             case BirdState.Out:
                 hideBird();
+                break;
+            case BirdState.GotLoot:
+                showBird();
                 break;
         }
     }

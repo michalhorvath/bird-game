@@ -7,10 +7,10 @@ public class LootManager : MonoBehaviour
 {
     public static event Action<string> OnLootCollected;
 
-    public static LootManager Instance;
+    public static LootManager instance;
 
     void Awake(){
-        Instance = this;
+        instance = this;
     }
 
     void Start(){
@@ -25,6 +25,10 @@ public class LootManager : MonoBehaviour
     public void getLoot(){
         PlayerDataManager.coins += 100;
         OnLootCollected?.Invoke("ignore");
+    }
+
+    public int previewLoot(){
+        return 100;
     }
 
 }

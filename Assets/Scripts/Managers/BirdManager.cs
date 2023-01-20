@@ -24,32 +24,15 @@ public class BirdManager : MonoBehaviour
 
     void Update()
     {
-       // checks if it's time for bird to arrive
        DateTimeOffset birdArrivalTime = PlayerDataManager.birdArrivalTime;
        if (state == BirdState.Out && birdArrivalTime < DateTimeOffset.Now){
-           UpdateBirdState(BirdState.Ready);
+           UpdateBirdState(BirdState.GotLoot);
        }
     }
 
-    void OnApplicationFocus(bool hasFocus){
-        //TODO: resetuj timer ak treba pripadne sprav loot ready
-        if (hasFocus) {
-        }
-    }
-
-    public void UpdateBirdState(BirdState newState){
+    private void UpdateBirdState(BirdState newState){
         state = newState;
-
-        switch (newState){
-            case BirdState.Ready:
-                makeBirdReady();
-                break;
-            case BirdState.Out:
-                makeBirdOut();
-                break;
-            case BirdState.GotLoot:
-                break;
-        }
+        PlayerDataManager.birdState = newState;
         OnBirdStateChanged?.Invoke(newState);
     }
 
@@ -60,28 +43,46 @@ public class BirdManager : MonoBehaviour
         }
     } 
 
+    public void makeBirdReady() {
+        UpdateBirdState(BirdState.Ready);
+    }
+
+    public void petBird() {
+        // TODO: implement
+        print("pet bird");
+    }
+
+    public void trainBird() {
+        // TODO: implement
+        print("train bird");
+    }
+
     private DateTimeOffset getBirdArrivalTime(){
         // TODO: prerobit mimo BirdManager cez novu helper class scheduler
         float birdAwayTime = 20f;
         DateTimeOffset birdArrivalTime = DateTimeOffset.Now.AddSeconds(birdAwayTime);
         return birdArrivalTime;
     }
-        
-    private void makeBirdReady(){
-    }
-
-    private void makeBirdOut(){
-    }
 
     private void initBirdState(){
-        DateTimeOffset birdArrivalTime = PlayerDataManager.birdArrivalTime;
-        double seconds = (birdArrivalTime - DateTimeOffset.Now).TotalSeconds;
-        if (seconds > 0){
-            UpdateBirdState(BirdState.Out);
-        } else {
-            UpdateBirdState(BirdState.Ready);
+        BirdState savedState = PlayerDataManager.birdState;
+        switch (savedState){
+            case BirdState.Ready:
+                UpdateBirdState(BirdState.Ready);
+                break;
+            case BirdState.Out:
+                DateTimeOffset birdArrivalTime = PlayerDataManager.birdArrivalTime;
+                double seconds = (birdArrivalTime - DateTimeOffset.Now).TotalSeconds;
+                if (seconds > 0){
+                    UpdateBirdState(BirdState.Out);
+                } else {
+                    UpdateBirdState(BirdState.GotLoot);
+                }
+                break;
+            case BirdState.GotLoot:
+                UpdateBirdState(BirdState.GotLoot);
+                break;
         }
-        // TODO: co ak je loot ready?
     }
 }
 

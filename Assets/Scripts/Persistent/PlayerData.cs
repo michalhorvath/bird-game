@@ -18,9 +18,12 @@ public class PlayerData
         }
     }
 
+    public BirdState birdState;
+
     public PlayerData(){
         this.coins = 0;
         this.gems = 0;
         this.birdArrivalTime = DateTimeOffset.MinValue;
+        this.birdState = BirdState.Ready;
     }
 }

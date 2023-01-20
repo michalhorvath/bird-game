@@ -5,8 +5,8 @@
             <ui:Button text="Coins: ???" display-tooltip-when-elided="true" name="HomeCoinsButton" class="button smallButton" />
             <ui:Button text="Gems: ???" display-tooltip-when-elided="true" name="HomeGemsButton" class="button smallButton" />
         </ui:VisualElement>
-        <ui:Label tabindex="-1" text="01:23" display-tooltip-when-elided="true" name="HomeBirdTimer" class="timerLabel" style="position: absolute; width: 100%; height: 100%;" />
-        <ui:Button display-tooltip-when-elided="true" name="BirdMenuOpenButton" style="position: absolute; width: 60%; height: 30%; justify-content: flex-start; margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom: auto; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px; left: 20%; top: 35%; background-color: rgba(88, 88, 88, 0);" />
+        <ui:Label tabindex="-1" text="01:23" display-tooltip-when-elided="true" name="HomeBirdTimer" class="timerLabel" style="position: absolute; width: 100%; height: 50%; display: none; left: 0; top: 25%;" />
+        <ui:Button display-tooltip-when-elided="true" name="BirdMenuOpenButton" style="position: absolute; width: 60%; height: 30%; justify-content: flex-start; margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom: auto; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px; left: 20%; top: 35%; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); background-color: rgba(88, 88, 88, 0);" />
         <ui:VisualElement name="BirdMenu" class="popupBackground" style="display: none;">
             <ui:VisualElement style="flex-direction: row; justify-content: space-around; flex-wrap: nowrap; visibility: visible;">
                 <ui:Button text="Pet" display-tooltip-when-elided="true" name="BirdPetButton" class="button smallButton" />
@@ -14,6 +14,13 @@
                 <ui:Button text="Train" display-tooltip-when-elided="true" name="BirdTrainButton" class="button smallButton" />
             </ui:VisualElement>
             <ui:Button text="Close" display-tooltip-when-elided="true" name="BirdMenuCloseButton" class="button smallButton" style="width: auto; background-color: rgb(165, 60, 55);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="LootMenu" class="popupBackground" style="justify-content: center; align-items: center; display: none;">
+            <ui:Label tabindex="-1" text="Here&apos;s your loot:" display-tooltip-when-elided="true" name="LootMenuLabel" enable-rich-text="true" class="bigLabel" style="color: rgb(255, 255, 255);" />
+            <ui:VisualElement name="LootMenuPreview">
+                <ui:Label tabindex="-1" text="123 coins" display-tooltip-when-elided="true" name="LootMenuPreviewCoins" class="bigLabel" style="background-color: rgba(255, 255, 255, 255);" />
+            </ui:VisualElement>
+            <ui:Button text="Claim" display-tooltip-when-elided="true" name="LootMenuClaimButton" class="smallButton" />
         </ui:VisualElement>
         <ui:VisualElement name="HomeBottomBar" style="justify-content: space-between; flex-direction: row;">
             <ui:Button text="Shop" display-tooltip-when-elided="true" name="HomeShopButton" class="button smallButton" />

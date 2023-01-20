@@ -41,6 +41,16 @@ public class PlayerDataManager : MonoBehaviour
         }
     }
 
+    public static BirdState birdState {
+        get {
+            return Instance.playerData.birdState;
+        }
+        set {
+            Instance.playerData.birdState = value;
+            Instance.playerDataChanged();
+        }
+    }
+
     void Awake() {
         Instance = this;
         load();

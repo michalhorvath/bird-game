@@ -39,6 +39,9 @@ public class BirdTimerTextController : MonoBehaviour
             case BirdState.Out:
                 startTimer();
                 break;
+            case BirdState.GotLoot:
+                stopTimer();
+                break;
         }
     }
 
