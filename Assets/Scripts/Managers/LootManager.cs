@@ -5,15 +5,12 @@ using UnityEngine;
 
 public class LootManager : MonoBehaviour
 {
-    [SerializeField] private GameObject getLootButton;
-
     public static event Action<string> OnLootCollected;
 
     public static LootManager Instance;
 
     void Awake(){
         Instance = this;
-        hideGetLootButton();
     }
 
     void Start(){
@@ -30,11 +27,4 @@ public class LootManager : MonoBehaviour
         OnLootCollected?.Invoke("ignore");
     }
 
-    private void hideGetLootButton(){
-        getLootButton.SetActive(false);
-    }
-    
-    private void showGetLootButton(){
-        getLootButton.SetActive(true);
-    }
 }
