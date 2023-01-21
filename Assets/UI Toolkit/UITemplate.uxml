@@ -16,14 +16,21 @@
             <ui:Button text="Close" display-tooltip-when-elided="true" name="BirdMenuCloseButton" class="button smallButton" style="width: auto; background-color: rgb(165, 60, 55);" />
         </ui:VisualElement>
         <ui:VisualElement name="LootMenu" class="popupBackground" style="justify-content: center; align-items: center; display: none;">
-            <ui:Label tabindex="-1" text="Here&apos;s your loot:" display-tooltip-when-elided="true" name="LootMenuLabel" enable-rich-text="true" class="bigLabel" style="color: rgb(255, 255, 255);" />
+            <ui:Label tabindex="-1" text="Here&apos;s your loot:" display-tooltip-when-elided="true" name="LootMenuLabel" enable-rich-text="true" class="popupLabel" />
             <ui:VisualElement name="LootMenuPreview">
-                <ui:Label tabindex="-1" text="123 coins" display-tooltip-when-elided="true" name="LootMenuPreviewCoins" class="bigLabel" style="background-color: rgba(255, 255, 255, 255);" />
+                <ui:Label tabindex="-1" text="123 coins" display-tooltip-when-elided="true" name="LootMenuPreviewCoins" class="bigLabel" style="background-color: rgb(255, 255, 255);" />
             </ui:VisualElement>
             <ui:Button text="Claim" display-tooltip-when-elided="true" name="LootMenuClaimButton" class="smallButton" />
         </ui:VisualElement>
+        <ui:VisualElement name="SkipMenu" class="popupBackground" style="align-items: center; justify-content: center; display: none;">
+            <ui:Label tabindex="-1" text="Skip waiting?" display-tooltip-when-elided="true" name="SkipMenuLabel" class="popupLabel" />
+            <ui:Button text="Watch Ad" display-tooltip-when-elided="true" name="SkipMenuWatchButton" class="smallButton" />
+            <ui:Button text="Pay 100g" display-tooltip-when-elided="true" enable-rich-text="false" name="SkipMenuPayButton" class="smallButton" />
+            <ui:Button text="Back" display-tooltip-when-elided="true" name="SkipMenuBackButton" class="smallButton" style="background-color: rgb(165, 60, 55);" />
+        </ui:VisualElement>
         <ui:VisualElement name="HomeBottomBar" style="justify-content: space-between; flex-direction: row;">
             <ui:Button text="Shop" display-tooltip-when-elided="true" name="HomeShopButton" class="button smallButton" />
+            <ui:Button text="Skip" display-tooltip-when-elided="true" name="HomeSkipButton" class="button smallButton" style="display: none;" />
             <ui:Button text="Menu" display-tooltip-when-elided="true" name="HomeMenuButton" class="button smallButton" />
         </ui:VisualElement>
     </ui:VisualElement>

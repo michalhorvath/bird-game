@@ -14,11 +14,13 @@ public class UIController : MonoBehaviour
     private VisualElement shopScreen;
     private VisualElement birdMenu;
     private VisualElement lootMenu;
+    private VisualElement skipMenu;
 
     private Button homeCoinsButton;
     private Button homeGemsButton;
     private Button homeShopButton;
     private Button homeMenuButton;
+    private Button homeSkipButton;
     private Button menuSettingsButton;
     private Button menuPhotoButton;
     private Button menuAlbumButton;
@@ -35,6 +37,9 @@ public class UIController : MonoBehaviour
     private Button birdMenuTrainButton;
     private Button birdMenuPetButton;
     private Button lootMenuClaimButton;
+    private Button skipMenuWatchButton;
+    private Button skipMenuPayButton;
+    private Button skipMenuBackButton;
 
     private Label homeBirdTimer;
     private Label lootMenuPreviewCoins;
@@ -49,11 +54,13 @@ public class UIController : MonoBehaviour
         shopScreen = document.rootVisualElement.Q<VisualElement>("ShopScreen");
         birdMenu = document.rootVisualElement.Q<VisualElement>("BirdMenu");
         lootMenu = document.rootVisualElement.Q<VisualElement>("LootMenu");
+        skipMenu = document.rootVisualElement.Q<VisualElement>("SkipMenu");
         
         homeCoinsButton = document.rootVisualElement.Q<Button>("HomeCoinsButton");
         homeGemsButton = document.rootVisualElement.Q<Button>("HomeGemsButton");
         homeShopButton = document.rootVisualElement.Q<Button>("HomeShopButton");
         homeMenuButton = document.rootVisualElement.Q<Button>("HomeMenuButton");
+        homeSkipButton = document.rootVisualElement.Q<Button>("HomeSkipButton");
         menuSettingsButton = document.rootVisualElement.Q<Button>("MenuSettingsButton");
         menuPhotoButton = document.rootVisualElement.Q<Button>("MenuPhotoButton");
         menuAlbumButton = document.rootVisualElement.Q<Button>("MenuAlbumButton");
@@ -70,6 +77,9 @@ public class UIController : MonoBehaviour
         birdMenuTrainButton = document.rootVisualElement.Q<Button>("BirdMenuTrainButton");
         birdMenuPetButton = document.rootVisualElement.Q<Button>("BirdMenuPetButton");
         lootMenuClaimButton = document.rootVisualElement.Q<Button>("LootMenuClaimButton");
+        skipMenuWatchButton = document.rootVisualElement.Q<Button>("SkipMenuWatchButton");
+        skipMenuPayButton = document.rootVisualElement.Q<Button>("SkipMenuPayButton");
+        skipMenuBackButton = document.rootVisualElement.Q<Button>("SkipMenuBackButton");
 
         homeBirdTimer = document.rootVisualElement.Q<Label>("HomeBirdTimer");
         lootMenuPreviewCoins = document.rootVisualElement.Q<Label>("LootMenuPreviewCoins");
@@ -129,6 +139,27 @@ public class UIController : MonoBehaviour
             birdMenu.style.display = DisplayStyle.None;
         };
 
+        homeSkipButton.clicked += () => {
+            skipMenu.style.display = DisplayStyle.Flex;
+            homeSkipButton.style.display = DisplayStyle.None;
+        };
+
+        skipMenuBackButton.clicked += () => {
+            skipMenu.style.display = DisplayStyle.None;
+            homeSkipButton.style.display = DisplayStyle.Flex;
+        };
+
+        skipMenuWatchButton.clicked += () => {
+            BirdManager.instance.skipWaiting();
+        };
+
+        skipMenuPayButton.clicked += () => {
+            if (PlayerDataManager.coins >= 100){
+                BirdManager.instance.skipWaiting();
+                PlayerDataManager.coins -= 100;
+            }
+        };
+
 
 
         birdSendButton.clicked += () => {
@@ -163,12 +194,16 @@ public class UIController : MonoBehaviour
                 homeBirdTimer.style.display = DisplayStyle.None;
                 birdMenuOpenButton.style.display = DisplayStyle.Flex;
                 lootMenu.style.display = DisplayStyle.None;
+                homeSkipButton.style.display = DisplayStyle.None;
+                skipMenu.style.display = DisplayStyle.None;
                 break;
             case BirdState.Out:
                 birdMenu.style.display = DisplayStyle.None;
                 homeBirdTimer.style.display = DisplayStyle.Flex;
                 birdMenuOpenButton.style.display = DisplayStyle.None;
                 lootMenu.style.display = DisplayStyle.None;
+                homeSkipButton.style.display = DisplayStyle.Flex;
+                skipMenu.style.display = DisplayStyle.None;
                 break;
             case BirdState.GotLoot:
                 birdMenu.style.display = DisplayStyle.None;
@@ -176,6 +211,8 @@ public class UIController : MonoBehaviour
                 birdMenuOpenButton.style.display = DisplayStyle.None;
                 lootMenu.style.display = DisplayStyle.Flex;
                 lootMenuPreviewCoins.text = $"{LootManager.instance.previewLoot()} coins";
+                homeSkipButton.style.display = DisplayStyle.None;
+                skipMenu.style.display = DisplayStyle.None;
                 break;
          }
      }

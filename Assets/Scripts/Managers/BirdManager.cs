@@ -43,6 +43,12 @@ public class BirdManager : MonoBehaviour
         }
     } 
 
+    public void skipWaiting() {
+        if (state == BirdState.Out){
+            UpdateBirdState(BirdState.GotLoot);
+        }
+    }
+
     public void makeBirdReady() {
         UpdateBirdState(BirdState.Ready);
     }
@@ -59,7 +65,7 @@ public class BirdManager : MonoBehaviour
 
     private DateTimeOffset getBirdArrivalTime(){
         // TODO: prerobit mimo BirdManager cez novu helper class scheduler
-        float birdAwayTime = 20f;
+        float birdAwayTime = 10f;
         DateTimeOffset birdArrivalTime = DateTimeOffset.Now.AddSeconds(birdAwayTime);
         return birdArrivalTime;
     }

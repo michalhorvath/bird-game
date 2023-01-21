@@ -127,3 +127,13 @@
     margin-bottom: 20px;
     display: none;
 }
+
+.popupLabel {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=20ebfd8a77b71b29c912f0db46e6df84&type=3#NotInter-Regular');
+    font-size: 100px;
+    color: rgba(255, 255, 255, 255);
+}
