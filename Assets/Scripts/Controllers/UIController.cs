@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour
     private VisualElement birdMenu;
     private VisualElement lootMenu;
     private VisualElement skipMenu;
+    private VisualElement currencyTopBar;
 
     private Button homeCoinsButton;
     private Button homeGemsButton;
@@ -28,6 +29,9 @@ public class UIController : MonoBehaviour
     private Button menuBackButton;
     private Button settingsBackButton;
     private Button gemsBackButton;
+    private Button gemsG2CButton;
+    private Button gemsC2GButton;
+    private Button gemsM2GButton;
     private Button shopBackButton;
     private Button birdPetButton;
     private Button birdSendButton;
@@ -55,6 +59,7 @@ public class UIController : MonoBehaviour
         birdMenu = document.rootVisualElement.Q<VisualElement>("BirdMenu");
         lootMenu = document.rootVisualElement.Q<VisualElement>("LootMenu");
         skipMenu = document.rootVisualElement.Q<VisualElement>("SkipMenu");
+        currencyTopBar = document.rootVisualElement.Q<VisualElement>("CurrencyTopBar");
         
         homeCoinsButton = document.rootVisualElement.Q<Button>("HomeCoinsButton");
         homeGemsButton = document.rootVisualElement.Q<Button>("HomeGemsButton");
@@ -68,6 +73,9 @@ public class UIController : MonoBehaviour
         menuBackButton = document.rootVisualElement.Q<Button>("MenuBackButton");
         settingsBackButton = document.rootVisualElement.Q<Button>("SettingsBackButton");
         gemsBackButton = document.rootVisualElement.Q<Button>("GemsBackButton");
+        gemsG2CButton = document.rootVisualElement.Q<Button>("GemsG2CButton");
+        gemsC2GButton = document.rootVisualElement.Q<Button>("GemsC2GButton");
+        gemsM2GButton = document.rootVisualElement.Q<Button>("GemsM2GButton");
         shopBackButton = document.rootVisualElement.Q<Button>("ShopBackButton");
         birdPetButton = document.rootVisualElement.Q<Button>("BirdPetButton");
         birdSendButton = document.rootVisualElement.Q<Button>("BirdSendButton");
@@ -107,16 +115,31 @@ public class UIController : MonoBehaviour
         homeGemsButton.clicked += () => {
             homeScreen.style.display = DisplayStyle.None;
             gemsScreen.style.display = DisplayStyle.Flex;
+            currencyTopBar.style.display = DisplayStyle.Flex;
         };
 
         homeCoinsButton.clicked += () => {
             homeScreen.style.display = DisplayStyle.None;
             gemsScreen.style.display = DisplayStyle.Flex;
+            currencyTopBar.style.display = DisplayStyle.Flex;
+        };
+
+        gemsG2CButton.clicked += () => {
+            TradeManager.instance.tradeG2C(1, 100);
+        };
+
+        gemsC2GButton.clicked += () => {
+            TradeManager.instance.tradeC2G(120, 1);
+        };
+
+        gemsM2GButton.clicked += () => {
+            TradeManager.instance.tradeC2G(0, 3);
         };
 
         gemsBackButton.clicked += () => {
             homeScreen.style.display = DisplayStyle.Flex;
             gemsScreen.style.display = DisplayStyle.None;
+            currencyTopBar.style.display = DisplayStyle.None;
         };
 
         homeShopButton.clicked += () => {
@@ -154,13 +177,8 @@ public class UIController : MonoBehaviour
         };
 
         skipMenuPayButton.clicked += () => {
-            if (PlayerDataManager.coins >= 100){
-                BirdManager.instance.skipWaiting();
-                PlayerDataManager.coins -= 100;
-            }
+            TradeManager.instance.skipWaiting();
         };
-
-
 
         birdSendButton.clicked += () => {
             BirdManager.instance.sendBirdOut();

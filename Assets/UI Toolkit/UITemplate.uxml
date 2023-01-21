@@ -24,9 +24,9 @@
         </ui:VisualElement>
         <ui:VisualElement name="SkipMenu" class="popupBackground" style="align-items: center; justify-content: center; display: none;">
             <ui:Label tabindex="-1" text="Skip waiting?" display-tooltip-when-elided="true" name="SkipMenuLabel" class="popupLabel" />
-            <ui:Button text="Watch Ad" display-tooltip-when-elided="true" name="SkipMenuWatchButton" class="smallButton" />
-            <ui:Button text="Pay 100g" display-tooltip-when-elided="true" enable-rich-text="false" name="SkipMenuPayButton" class="smallButton" />
-            <ui:Button text="Back" display-tooltip-when-elided="true" name="SkipMenuBackButton" class="smallButton" style="background-color: rgb(165, 60, 55);" />
+            <ui:Button text="Watch Ad" display-tooltip-when-elided="true" name="SkipMenuWatchButton" class="bigButton" />
+            <ui:Button text="Pay 100g" display-tooltip-when-elided="true" enable-rich-text="false" name="SkipMenuPayButton" class="bigButton" />
+            <ui:Button text="Back" display-tooltip-when-elided="true" name="SkipMenuBackButton" class="bigButton" style="background-color: rgb(165, 60, 55);" />
         </ui:VisualElement>
         <ui:VisualElement name="HomeBottomBar" style="justify-content: space-between; flex-direction: row;">
             <ui:Button text="Shop" display-tooltip-when-elided="true" name="HomeShopButton" class="button smallButton" />
@@ -51,9 +51,9 @@
     </ui:VisualElement>
     <ui:VisualElement name="GemsScreen" class="hideBackground" style="flex-grow: 1; display: none; justify-content: center; align-items: center;">
         <ui:Label tabindex="-1" text="&lt;u&gt;Gem Exchange&lt;/u&gt; " display-tooltip-when-elided="true" name="GemsLabel" enable-rich-text="true" class="bigLabel" />
-        <ui:Button text="Gems =&gt; Coins" display-tooltip-when-elided="true" name="GemsG2CButton" class="button bigButton" />
-        <ui:Button text="Coins =&gt; Gems" display-tooltip-when-elided="true" name="GemsC2GButton" class="button bigButton" />
-        <ui:Button text="Real Money =&gt; Gems" display-tooltip-when-elided="true" name="GemsMoneyButton" enable-rich-text="false" class="button bigButton" />
+        <ui:Button text="1 Gem =&gt; 100 Coins" display-tooltip-when-elided="true" name="GemsG2CButton" class="button bigButton" />
+        <ui:Button text="120 Coins =&gt; 1 Gem" display-tooltip-when-elided="true" name="GemsC2GButton" class="button bigButton" />
+        <ui:Button text="1 € =&gt; 3 Gems" display-tooltip-when-elided="true" name="GemsM2GButton" enable-rich-text="false" class="button bigButton" />
         <ui:Button text="X" display-tooltip-when-elided="true" name="GemsBackButton" enable-rich-text="true" class="button backButton" />
     </ui:VisualElement>
     <ui:VisualElement name="ShopScreen" class="hideBackground" style="flex-grow: 1; display: none; justify-content: center; align-items: center;">
@@ -63,5 +63,9 @@
             <ui:Button text="Customize" display-tooltip-when-elided="true" name="ShopCustomizeButton" class="button bigButton" style="width: 400px; height: 400px;" />
         </ui:VisualElement>
         <ui:Button text="X" display-tooltip-when-elided="true" name="ShopBackButton" enable-rich-text="true" class="button backButton" />
+    </ui:VisualElement>
+    <ui:VisualElement name="CurrencyTopBar" style="flex-direction: row; justify-content: flex-start; position: absolute; display: none; margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px;">
+        <ui:Button text="Coins: ???" display-tooltip-when-elided="true" name="CurrencyCoinsButton" class="button smallButton" />
+        <ui:Button text="Gems: ???" display-tooltip-when-elided="true" name="CurrencyGemsButton" class="button smallButton" />
     </ui:VisualElement>
 </ui:UXML>

@@ -9,11 +9,15 @@ public class CoinGemTextController : MonoBehaviour
     private UIDocument document; 
     private Button homeCoinsButton;
     private Button homeGemsButton;
+    private Button currencyCoinsButton;
+    private Button currencyGemsButton;
 
     void Awake(){
         document = GetComponent<UIDocument>();
         homeCoinsButton = document.rootVisualElement.Q<Button>("HomeCoinsButton");
         homeGemsButton = document.rootVisualElement.Q<Button>("HomeGemsButton");
+        currencyCoinsButton = document.rootVisualElement.Q<Button>("CurrencyCoinsButton");
+        currencyGemsButton = document.rootVisualElement.Q<Button>("CurrencyGemsButton");
 
         PlayerDataManager.OnPlayerDataChanged += updateText;
     }
@@ -32,5 +36,7 @@ public class CoinGemTextController : MonoBehaviour
 
         homeCoinsButton.text = "Coins: " + coins;
         homeGemsButton.text = "Gems: " + gems;
+        currencyCoinsButton.text = "Coins: " + coins;
+        currencyGemsButton.text = "Gems: " + gems;
     }
 }
