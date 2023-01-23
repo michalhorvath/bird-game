@@ -9,6 +9,8 @@ public class BirdManager : MonoBehaviour
     public BirdState state;
 
     public static event Action<BirdState> OnBirdStateChanged;
+
+    public static event Action<int> OnActiveBirdChanged;
     
     public static BirdManager instance;
 
@@ -58,11 +60,6 @@ public class BirdManager : MonoBehaviour
         print("pet bird");
     }
 
-    public void trainBird() {
-        // TODO: implement
-        print("train bird");
-    }
-
     private DateTimeOffset getBirdArrivalTime(){
         // TODO: prerobit mimo BirdManager cez novu helper class scheduler
         float birdAwayTime = 10f;
@@ -88,6 +85,37 @@ public class BirdManager : MonoBehaviour
             case BirdState.GotLoot:
                 UpdateBirdState(BirdState.GotLoot);
                 break;
+        }
+    }
+
+    public bool isNewBirdAvailable(){
+        return nextBirdAvailable() != -1;
+    }
+
+    public int nextBirdAvailable(){
+        BirdData[] birdData = PlayerDataManager.getBirdData();
+        for(int i = 0; i < birdData.Length; i++){
+            if (!birdData[i].isBought){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void buyNewBird(){
+        int nextBird = nextBirdAvailable();
+        if (nextBird != -1){
+            PlayerDataManager.getBirdData()[nextBird].isBought = true;
+            PlayerDataManager.activeBirdID = nextBird;
+            PlayerDataManager.gems -= 4;
+        }
+    }
+
+    public void setActiveBird(int i){
+        BirdData[] birdData = PlayerDataManager.getBirdData();
+        if (i>=0 && i<=birdData.Length){
+            PlayerDataManager.activeBirdID = i;
+            OnActiveBirdChanged?.Invoke(i);
         }
     }
 }

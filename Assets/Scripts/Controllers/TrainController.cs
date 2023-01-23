@@ -73,17 +73,17 @@ public class TrainController : MonoBehaviour
             new String('★', PlayerDataManager.getActiveBird().skills[2]);
         trainSkillPrice.text = "Price: ";
 
-        if (PlayerDataManager.getActiveBird().skills[0] < 4){
+        if (PlayerDataManager.getActiveBird().skills[0] < 5){
             trainSkill0Button.style.display = DisplayStyle.Flex;
         } else {
             trainSkill0Button.style.display = DisplayStyle.None;
         }
-        if (PlayerDataManager.getActiveBird().skills[1] < 4){
+        if (PlayerDataManager.getActiveBird().skills[1] < 5){
             trainSkill1Button.style.display = DisplayStyle.Flex;
         } else {
             trainSkill1Button.style.display = DisplayStyle.None;
         }
-        if (PlayerDataManager.getActiveBird().skills[2] < 4){
+        if (PlayerDataManager.getActiveBird().skills[2] < 5){
             trainSkill2Button.style.display = DisplayStyle.Flex;
         } else {
             trainSkill2Button.style.display = DisplayStyle.None;

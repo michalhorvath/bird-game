@@ -31,6 +31,16 @@ public class PlayerDataManager : MonoBehaviour
         }
     }
 
+    public static int activeBirdID {
+        get {
+            return Instance.playerData.activeBirdID;
+        }
+        set {
+            Instance.playerData.activeBirdID = value;
+            Instance.playerDataChanged();
+        }
+    }
+
     public static DateTimeOffset birdArrivalTime {
         get {
             return Instance.playerData.birdArrivalTime;
@@ -74,5 +84,13 @@ public class PlayerDataManager : MonoBehaviour
 
     public static BirdData getActiveBird(){
         return Instance.playerData.birdData[Instance.playerData.activeBirdID];
+    }
+
+    public static BirdData[] getBirdData(){
+        return Instance.playerData.birdData;
+    }
+
+    public static ItemData[] getItemData(){
+        return Instance.playerData.itemData;
     }
 }

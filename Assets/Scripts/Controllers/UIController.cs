@@ -17,6 +17,8 @@ public class UIController : MonoBehaviour
     private VisualElement skipMenu;
     private VisualElement currencyTopBar;
     private VisualElement trainScreen;
+    private VisualElement buyBirdScreen;
+    private VisualElement newBirdScreen;
 
     private Button homeCoinsButton;
     private Button homeGemsButton;
@@ -34,6 +36,7 @@ public class UIController : MonoBehaviour
     private Button gemsC2GButton;
     private Button gemsM2GButton;
     private Button shopBackButton;
+    private Button shopBirdButton;
     private Button birdPetButton;
     private Button birdSendButton;
     private Button birdTrainButton;
@@ -46,6 +49,9 @@ public class UIController : MonoBehaviour
     private Button skipMenuPayButton;
     private Button skipMenuBackButton;
     private Button trainBackButton;
+    private Button buyBirdBackButton;
+    private Button buyBirdConfirmButton;
+    private Button newBirdContinueButton;
 
     private Label homeBirdTimer;
     private Label lootMenuPreviewCoins;
@@ -63,6 +69,8 @@ public class UIController : MonoBehaviour
         skipMenu = document.rootVisualElement.Q<VisualElement>("SkipMenu");
         currencyTopBar = document.rootVisualElement.Q<VisualElement>("CurrencyTopBar");
         trainScreen = document.rootVisualElement.Q<VisualElement>("TrainScreen");
+        buyBirdScreen = document.rootVisualElement.Q<VisualElement>("BuyBirdScreen");
+        newBirdScreen = document.rootVisualElement.Q<VisualElement>("NewBirdScreen");
         
         homeCoinsButton = document.rootVisualElement.Q<Button>("HomeCoinsButton");
         homeGemsButton = document.rootVisualElement.Q<Button>("HomeGemsButton");
@@ -80,6 +88,7 @@ public class UIController : MonoBehaviour
         gemsC2GButton = document.rootVisualElement.Q<Button>("GemsC2GButton");
         gemsM2GButton = document.rootVisualElement.Q<Button>("GemsM2GButton");
         shopBackButton = document.rootVisualElement.Q<Button>("ShopBackButton");
+        shopBirdButton = document.rootVisualElement.Q<Button>("ShopBirdButton");
         birdPetButton = document.rootVisualElement.Q<Button>("BirdPetButton");
         birdSendButton = document.rootVisualElement.Q<Button>("BirdSendButton");
         birdTrainButton = document.rootVisualElement.Q<Button>("BirdTrainButton");
@@ -92,6 +101,9 @@ public class UIController : MonoBehaviour
         skipMenuPayButton = document.rootVisualElement.Q<Button>("SkipMenuPayButton");
         skipMenuBackButton = document.rootVisualElement.Q<Button>("SkipMenuBackButton");
         trainBackButton = document.rootVisualElement.Q<Button>("TrainBackButton");
+        buyBirdBackButton = document.rootVisualElement.Q<Button>("BuyBirdBackButton");
+        buyBirdConfirmButton = document.rootVisualElement.Q<Button>("BuyBirdConfirmButton");
+        newBirdContinueButton = document.rootVisualElement.Q<Button>("NewBirdContinueButton");
 
         homeBirdTimer = document.rootVisualElement.Q<Label>("HomeBirdTimer");
         lootMenuPreviewCoins = document.rootVisualElement.Q<Label>("LootMenuPreviewCoins");
@@ -154,6 +166,29 @@ public class UIController : MonoBehaviour
         shopBackButton.clicked += () => {
             homeScreen.style.display = DisplayStyle.Flex;
             shopScreen.style.display = DisplayStyle.None;
+        };
+
+        shopBirdButton.clicked += () => {
+            buyBirdScreen.style.display = DisplayStyle.Flex;
+            shopScreen.style.display = DisplayStyle.None;
+            currencyTopBar.style.display = DisplayStyle.Flex;
+        };
+
+        buyBirdBackButton.clicked += () => {
+            buyBirdScreen.style.display = DisplayStyle.None;
+            shopScreen.style.display = DisplayStyle.Flex;
+            currencyTopBar.style.display = DisplayStyle.None;
+        };
+
+        buyBirdConfirmButton.clicked += () => {
+            buyBirdScreen.style.display = DisplayStyle.None;
+            newBirdScreen.style.display = DisplayStyle.Flex;
+            currencyTopBar.style.display = DisplayStyle.None;
+        };
+
+        newBirdContinueButton.clicked += () => {
+            homeScreen.style.display = DisplayStyle.Flex;
+            newBirdScreen.style.display = DisplayStyle.None;
         };
 
         birdMenuOpenButton.clicked += () => {

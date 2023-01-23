@@ -21,5 +21,6 @@ public class ItemData
             skinData[i] = new SkinData();
             skinData[i].id = i;
         }
+        skinData[0].isBought = true;
     }
 }
