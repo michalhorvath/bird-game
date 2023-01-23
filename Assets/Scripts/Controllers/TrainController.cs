@@ -19,6 +19,8 @@ public class TrainController : MonoBehaviour
     private Button trainBackButton;
     private Label trainSkillPrice;
 
+    private Button birdTrainButton;
+
     private int selectedSkill = 0;
 
     private int[] skillCost = {1, 2, 3, 4, 5};
@@ -36,6 +38,8 @@ public class TrainController : MonoBehaviour
         trainConfirmButton = document.rootVisualElement.Q<Button>("TrainConfirmButton");
         trainBackButton = document.rootVisualElement.Q<Button>("TrainBackButton");
         trainSkillPrice = document.rootVisualElement.Q<Label>("TrainSkillPrice");
+
+        birdTrainButton = document.rootVisualElement.Q<Button>("BirdTrainButton");
 
         trainBackButton.clicked += () => {
             reset();
@@ -55,6 +59,10 @@ public class TrainController : MonoBehaviour
 
         trainConfirmButton.clicked += () => {
             confirmSkill();
+        };
+
+        birdTrainButton.clicked += () => {
+            reset();
         };
     }
 
