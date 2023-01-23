@@ -68,4 +68,30 @@
         <ui:Button text="Coins: ???" display-tooltip-when-elided="true" name="CurrencyCoinsButton" class="button smallButton" />
         <ui:Button text="Gems: ???" display-tooltip-when-elided="true" name="CurrencyGemsButton" class="button smallButton" />
     </ui:VisualElement>
+    <ui:VisualElement name="TrainScreen" style="justify-content: space-between; align-items: stretch; flex-grow: 1; display: none;">
+        <ui:VisualElement name="TrainMenu" class="popupBackground" style="top: 180px;">
+            <ui:VisualElement name="TrainSkill0" style="flex-direction: row;">
+                <ui:Label tabindex="-1" text="Speed:" display-tooltip-when-elided="true" name="TrainSkill0Label" class="popupLabel" />
+                <ui:Label tabindex="-1" text="★★★★★" display-tooltip-when-elided="true" name="TrainSkill0Stars" class="popupLabel" />
+                <ui:Button text="Select" display-tooltip-when-elided="true" name="TrainSkill0Button" class="smallButton selectColor" />
+            </ui:VisualElement>
+            <ui:VisualElement name="TrainSkill1" style="flex-direction: row;">
+                <ui:Label tabindex="-1" text="Wisdom:" display-tooltip-when-elided="true" name="TrainSkill1Label" class="popupLabel" />
+                <ui:Label tabindex="-1" text="★★★★★" display-tooltip-when-elided="true" name="TrainSkill1Stars" class="popupLabel" />
+                <ui:Button text="Select" display-tooltip-when-elided="true" name="TrainSkill1Button" class="smallButton selectColor" />
+            </ui:VisualElement>
+            <ui:VisualElement name="TrainSkill2" style="flex-direction: row;">
+                <ui:Label tabindex="-1" text="Greed:" display-tooltip-when-elided="true" name="TrainSkill2Label" class="popupLabel" />
+                <ui:Label tabindex="-1" text="★★★★★" display-tooltip-when-elided="true" name="TrainSkill2Stars" class="popupLabel" />
+                <ui:Button text="Select" display-tooltip-when-elided="true" name="TrainSkill2Button" class="smallButton selectColor" />
+            </ui:VisualElement>
+            <ui:VisualElement>
+                <ui:Label tabindex="-1" text="Price:" display-tooltip-when-elided="true" name="TrainSkillPrice" class="popupLabel" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="TrainBottomBar" style="flex-direction: row; justify-content: space-between; align-items: stretch; flex-wrap: nowrap;">
+            <ui:Button text="Back" display-tooltip-when-elided="true" name="TrainBackButton" class="smallButton backColor" />
+            <ui:Button text="Confirm" display-tooltip-when-elided="true" name="TrainConfirmButton" class="smallButton confirmColor" />
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>

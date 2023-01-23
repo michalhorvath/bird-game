@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerDataManager : MonoBehaviour
 {
-    private PlayerData playerData;
+    public PlayerData playerData;
 
     public static PlayerDataManager Instance;
 
@@ -67,8 +67,12 @@ public class PlayerDataManager : MonoBehaviour
         SaveLoadSystem.savePlayerData(playerData);
     }
 
-    void playerDataChanged(){
+    public void playerDataChanged(){
         OnPlayerDataChanged?.Invoke("ignore");
         save();
+    }
+
+    public static BirdData getActiveBird(){
+        return Instance.playerData.birdData[Instance.playerData.activeBirdID];
     }
 }

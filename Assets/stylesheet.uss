@@ -128,6 +128,14 @@
     display: none;
 }
 
+.confirmColor {
+    background-color: rgba(55, 165, 87, 255);
+}
+
+.backColor {
+    background-color: rgba(165, 60, 55, 255);
+}
+
 .popupLabel {
     margin-left: 20px;
     margin-right: 20px;
@@ -136,4 +144,39 @@
     -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=20ebfd8a77b71b29c912f0db46e6df84&type=3#NotInter-Regular');
     font-size: 100px;
     color: rgba(255, 255, 255, 255);
+}
+
+.skillPlus {
+    width: 140px;
+    height: 140px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=20ebfd8a77b71b29c912f0db46e6df84&type=3#NotInter-Regular');
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    color: rgba(0, 0, 0, 255);
+    font-size: 80px;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-top-left-radius: 70px;
+    border-bottom-left-radius: 70px;
+    border-top-right-radius: 70px;
+    border-bottom-right-radius: 70px;
+    border-left-color: rgba(0, 0, 0, 255);
+    border-right-color: rgba(0, 0, 0, 255);
+    border-top-color: rgba(0, 0, 0, 255);
+    border-bottom-color: rgba(0, 0, 0, 255);
+    background-color: rgba(55, 137, 165, 255);
+}
+
+.selectColor {
+    background-color: rgba(55, 127, 165, 255);
+}
+
+.selectedColor {
+    background-color: rgba(55, 165, 87, 255);
 }

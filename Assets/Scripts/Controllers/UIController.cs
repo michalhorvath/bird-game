@@ -16,6 +16,7 @@ public class UIController : MonoBehaviour
     private VisualElement lootMenu;
     private VisualElement skipMenu;
     private VisualElement currencyTopBar;
+    private VisualElement trainScreen;
 
     private Button homeCoinsButton;
     private Button homeGemsButton;
@@ -44,6 +45,7 @@ public class UIController : MonoBehaviour
     private Button skipMenuWatchButton;
     private Button skipMenuPayButton;
     private Button skipMenuBackButton;
+    private Button trainBackButton;
 
     private Label homeBirdTimer;
     private Label lootMenuPreviewCoins;
@@ -60,6 +62,7 @@ public class UIController : MonoBehaviour
         lootMenu = document.rootVisualElement.Q<VisualElement>("LootMenu");
         skipMenu = document.rootVisualElement.Q<VisualElement>("SkipMenu");
         currencyTopBar = document.rootVisualElement.Q<VisualElement>("CurrencyTopBar");
+        trainScreen = document.rootVisualElement.Q<VisualElement>("TrainScreen");
         
         homeCoinsButton = document.rootVisualElement.Q<Button>("HomeCoinsButton");
         homeGemsButton = document.rootVisualElement.Q<Button>("HomeGemsButton");
@@ -88,6 +91,7 @@ public class UIController : MonoBehaviour
         skipMenuWatchButton = document.rootVisualElement.Q<Button>("SkipMenuWatchButton");
         skipMenuPayButton = document.rootVisualElement.Q<Button>("SkipMenuPayButton");
         skipMenuBackButton = document.rootVisualElement.Q<Button>("SkipMenuBackButton");
+        trainBackButton = document.rootVisualElement.Q<Button>("TrainBackButton");
 
         homeBirdTimer = document.rootVisualElement.Q<Label>("HomeBirdTimer");
         lootMenuPreviewCoins = document.rootVisualElement.Q<Label>("LootMenuPreviewCoins");
@@ -184,12 +188,6 @@ public class UIController : MonoBehaviour
             BirdManager.instance.sendBirdOut();
         };
 
-        birdTrainButton.clicked += () => {
-            BirdManager.instance.trainBird();
-            birdMenuOpenButton.style.display = DisplayStyle.Flex;
-            birdMenu.style.display = DisplayStyle.None;
-        };
-
         birdPetButton.clicked += () => {
             BirdManager.instance.petBird();
             birdMenuOpenButton.style.display = DisplayStyle.Flex;
@@ -201,6 +199,23 @@ public class UIController : MonoBehaviour
             LootManager.instance.getLoot();
         };
 
+        homeCoinsButton.clicked += () => {
+            homeScreen.style.display = DisplayStyle.None;
+            gemsScreen.style.display = DisplayStyle.Flex;
+            currencyTopBar.style.display = DisplayStyle.Flex;
+        };
+
+        birdTrainButton.clicked += () => {
+            trainScreen.style.display = DisplayStyle.Flex;
+            homeScreen.style.display = DisplayStyle.None;
+            currencyTopBar.style.display = DisplayStyle.Flex;
+        };
+
+        trainBackButton.clicked += () => {
+            trainScreen.style.display = DisplayStyle.None;
+            homeScreen.style.display = DisplayStyle.Flex;
+            currencyTopBar.style.display = DisplayStyle.None;
+        };
 
         BirdManager.OnBirdStateChanged += OnBirdStateChanged;
     }
