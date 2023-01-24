@@ -39,7 +39,7 @@ public class PlayerData
         }
         birdData[0].isBought = true;
 
-        this.itemData = new ItemData[5];
+        this.itemData = new ItemData[20];
         for(int i = 0; i < itemData.Length;  i++){
             itemData[i] = new ItemData();
             itemData[i].id = i;

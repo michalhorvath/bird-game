@@ -21,6 +21,8 @@ public class UIController : MonoBehaviour
     private VisualElement newBirdScreen;
     private VisualElement birdAlbumScreen;
     private VisualElement birdDetailsScreen;
+    private VisualElement itemCatalogScreen;
+    private VisualElement itemDetailsScreen;
 
     private Button homeCoinsButton;
     private Button homeGemsButton;
@@ -32,6 +34,8 @@ public class UIController : MonoBehaviour
     private Button menuAlbumButton;
     private Button birdAlbumBackButton;
     private Button birdDetailsBackButton;
+    private Button itemCatalogBackButton;
+    private Button itemDetailsBackButton;
     private Button menuCatalogButton;
     private Button menuBackButton;
     private Button settingsBackButton;
@@ -59,6 +63,7 @@ public class UIController : MonoBehaviour
 
     private Label homeBirdTimer;
     private Label lootMenuPreviewCoins;
+    private Label lootMenuPreviewItem;
 
     void Awake() {
         document = GetComponent<UIDocument>();
@@ -77,6 +82,8 @@ public class UIController : MonoBehaviour
         newBirdScreen = document.rootVisualElement.Q<VisualElement>("NewBirdScreen");
         birdAlbumScreen = document.rootVisualElement.Q<VisualElement>("BirdAlbumScreen");
         birdDetailsScreen = document.rootVisualElement.Q<VisualElement>("BirdDetailsScreen");
+        itemCatalogScreen = document.rootVisualElement.Q<VisualElement>("ItemCatalogScreen");
+        itemDetailsScreen = document.rootVisualElement.Q<VisualElement>("ItemDetailsScreen");
         
         homeCoinsButton = document.rootVisualElement.Q<Button>("HomeCoinsButton");
         homeGemsButton = document.rootVisualElement.Q<Button>("HomeGemsButton");
@@ -86,8 +93,11 @@ public class UIController : MonoBehaviour
         menuSettingsButton = document.rootVisualElement.Q<Button>("MenuSettingsButton");
         menuPhotoButton = document.rootVisualElement.Q<Button>("MenuPhotoButton");
         menuAlbumButton = document.rootVisualElement.Q<Button>("MenuAlbumButton");
+        menuCatalogButton = document.rootVisualElement.Q<Button>("MenuCatalogButton");
         birdAlbumBackButton = document.rootVisualElement.Q<Button>("BirdAlbumBackButton");
         birdDetailsBackButton = document.rootVisualElement.Q<Button>("BirdDetailsBackButton");
+        itemCatalogBackButton = document.rootVisualElement.Q<Button>("ItemCatalogBackButton");
+        itemDetailsBackButton = document.rootVisualElement.Q<Button>("ItemDetailsBackButton");
         menuCatalogButton = document.rootVisualElement.Q<Button>("MenuCatalogButton");
         menuBackButton = document.rootVisualElement.Q<Button>("MenuBackButton");
         settingsBackButton = document.rootVisualElement.Q<Button>("SettingsBackButton");
@@ -115,6 +125,7 @@ public class UIController : MonoBehaviour
 
         homeBirdTimer = document.rootVisualElement.Q<Label>("HomeBirdTimer");
         lootMenuPreviewCoins = document.rootVisualElement.Q<Label>("LootMenuPreviewCoins");
+        lootMenuPreviewItem = document.rootVisualElement.Q<Label>("LootMenuPreviewItem");
 
         homeMenuButton.clicked += () => {
             homeScreen.style.display = DisplayStyle.None;
@@ -136,6 +147,11 @@ public class UIController : MonoBehaviour
             menuScreen.style.display = DisplayStyle.None;
         };
 
+        menuCatalogButton.clicked += () => {
+            itemCatalogScreen.style.display = DisplayStyle.Flex;
+            menuScreen.style.display = DisplayStyle.None;
+        };
+
         birdAlbumBackButton.clicked += () => {
             birdAlbumScreen.style.display = DisplayStyle.None;
             menuScreen.style.display = DisplayStyle.Flex;
@@ -144,6 +160,16 @@ public class UIController : MonoBehaviour
         birdDetailsBackButton.clicked += () => {
             birdAlbumScreen.style.display = DisplayStyle.Flex;
             birdDetailsScreen.style.display = DisplayStyle.None;
+        };
+
+        itemCatalogBackButton.clicked += () => {
+            itemCatalogScreen.style.display = DisplayStyle.None;
+            menuScreen.style.display = DisplayStyle.Flex;
+        };
+
+        itemDetailsBackButton.clicked += () => {
+            itemCatalogScreen.style.display = DisplayStyle.Flex;
+            itemDetailsScreen.style.display = DisplayStyle.None;
         };
 
         settingsBackButton.clicked += () => {
@@ -254,7 +280,7 @@ public class UIController : MonoBehaviour
 
         lootMenuClaimButton.clicked += () => {
             BirdManager.instance.makeBirdReady();
-            LootManager.instance.getLoot();
+            LootManager.instance.claimLoot();
         };
 
         homeCoinsButton.clicked += () => {
@@ -301,7 +327,13 @@ public class UIController : MonoBehaviour
                 homeBirdTimer.style.display = DisplayStyle.None;
                 birdMenuOpenButton.style.display = DisplayStyle.None;
                 lootMenu.style.display = DisplayStyle.Flex;
-                lootMenuPreviewCoins.text = $"{LootManager.instance.previewLoot()} coins";
+                if (LootManager.instance.previewLoot().isDuplicit){
+                    lootMenuPreviewItem.text = $"Item {LootManager.instance.previewLoot().itemID} (duplicit)";
+                    lootMenuPreviewCoins.text = $"{LootManager.instance.previewLoot().coins+100} coins";
+                } else {
+                    lootMenuPreviewCoins.text = $"{LootManager.instance.previewLoot().coins} coins";
+                    lootMenuPreviewItem.text = $"Item {LootManager.instance.previewLoot().itemID}";
+                }
                 homeSkipButton.style.display = DisplayStyle.None;
                 skipMenu.style.display = DisplayStyle.None;
                 break;

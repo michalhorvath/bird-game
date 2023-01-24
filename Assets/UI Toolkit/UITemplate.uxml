@@ -19,6 +19,7 @@
             <ui:Label tabindex="-1" text="Here&apos;s your loot:" display-tooltip-when-elided="true" name="LootMenuLabel" enable-rich-text="true" class="popupLabel" />
             <ui:VisualElement name="LootMenuPreview">
                 <ui:Label tabindex="-1" text="123 coins" display-tooltip-when-elided="true" name="LootMenuPreviewCoins" class="bigLabel" style="background-color: rgb(255, 255, 255);" />
+                <ui:Label tabindex="-1" text="Item 3 (duplicit)" display-tooltip-when-elided="true" name="LootMenuPreviewItem" class="bigLabel" style="background-color: rgb(255, 255, 255);" />
             </ui:VisualElement>
             <ui:Button text="Claim" display-tooltip-when-elided="true" name="LootMenuClaimButton" class="smallButton" />
         </ui:VisualElement>
@@ -149,5 +150,30 @@
             <ui:Button text="Pick Me" display-tooltip-when-elided="true" name="BirdDetailsPickButton" class="smallButton" />
         </ui:VisualElement>
         <ui:Button text="X" display-tooltip-when-elided="true" name="BirdDetailsBackButton" enable-rich-text="true" class="button backButton" />
+    </ui:VisualElement>
+    <ui:VisualElement name="ItemCatalogScreen" class="hideBackground" style="flex-grow: 1; align-items: center; justify-content: center; display: none;">
+        <ui:Label tabindex="-1" text="&lt;u&gt;Item catalog&lt;/u&gt; " display-tooltip-when-elided="true" class="bigLabel" />
+        <ui:ScrollView horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="AlwaysVisible" class="popupBackground" style="height: 60%; margin-left: 50px; margin-right: 50px; margin-top: 50px; margin-bottom: 50px; flex-wrap: nowrap; flex-grow: 0; flex-direction: row; align-items: stretch; justify-content: center; flex-shrink: 1; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; background-color: rgb(46, 46, 46);">
+            <ui:VisualElement name="ItemCatalogCells" style="flex-direction: row; flex-wrap: wrap; justify-content: flex-start; align-items: flex-start; flex-grow: 0; flex-shrink: 1; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
+                <ui:Button text="?" display-tooltip-when-elided="true" class="albumCell" />
+                <ui:Button text="?" display-tooltip-when-elided="true" class="albumCell" />
+                <ui:Button text="?" display-tooltip-when-elided="true" class="albumCell grayColor" />
+                <ui:Button text="?" display-tooltip-when-elided="true" class="albumCell grayColor" />
+                <ui:Button text="?" display-tooltip-when-elided="true" class="albumCell grayColor" />
+            </ui:VisualElement>
+        </ui:ScrollView>
+        <ui:Button text="X" display-tooltip-when-elided="true" name="ItemCatalogBackButton" enable-rich-text="true" class="button backButton" />
+    </ui:VisualElement>
+    <ui:VisualElement name="ItemDetailsScreen" class="hideBackground" style="flex-grow: 1; justify-content: center; align-items: center; display: none;">
+        <ui:VisualElement class="popupBackground" style="background-color: rgb(46, 46, 46);">
+            <ui:VisualElement style="flex-direction: row; justify-content: center; padding-left: 50px; padding-right: 50px; padding-top: 50px; padding-bottom: 50px;">
+                <ui:Button text="?" display-tooltip-when-elided="true" name="ItemDetailsCell" class="albumCell" />
+                <ui:Label tabindex="-1" text="&lt;u&gt;Chair&lt;/u&gt; " display-tooltip-when-elided="true" name="ItemDetailsNameLabel" class="popupLabelBig" />
+            </ui:VisualElement>
+            <ui:VisualElement style="align-items: center; margin-top: 50px; margin-bottom: 50px;">
+                <ui:Label tabindex="-1" text="Usefull for sitting!" display-tooltip-when-elided="true" class="popupLabelSmall" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Button text="X" display-tooltip-when-elided="true" name="ItemDetailsBackButton" enable-rich-text="true" class="button backButton" />
     </ui:VisualElement>
 </ui:UXML>

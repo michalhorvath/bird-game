@@ -61,8 +61,7 @@ public class BirdManager : MonoBehaviour
     }
 
     private DateTimeOffset getBirdArrivalTime(){
-        // TODO: prerobit mimo BirdManager cez novu helper class scheduler
-        float birdAwayTime = 10f;
+        float birdAwayTime = LootManager.instance.getOutTime();
         DateTimeOffset birdArrivalTime = DateTimeOffset.Now.AddSeconds(birdAwayTime);
         return birdArrivalTime;
     }
