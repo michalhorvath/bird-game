@@ -132,6 +132,16 @@
     color: rgba(255, 255, 255, 255);
 }
 
+.popupLabelBig {
+    color: rgba(255, 255, 255, 255);
+    font-size: 160px;
+    -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=20ebfd8a77b71b29c912f0db46e6df84&type=3#NotInter-Regular');
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .popupBackground {
     border-left-width: 5px;
     border-right-width: 5px;
@@ -154,16 +164,6 @@
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: rgba(0, 0, 0, 0.8);
-}
-
-.popupLabelBig {
-    color: rgba(255, 255, 255, 255);
-    font-size: 160px;
-    -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=20ebfd8a77b71b29c912f0db46e6df84&type=3#NotInter-Regular');
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .skillPlus {
@@ -199,4 +199,37 @@
 
 .selectedColor {
     background-color: rgba(55, 165, 87, 255);
+}
+
+.albumCell {
+    width: 280px;
+    height: 280px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-left-width: 7px;
+    border-right-width: 7px;
+    border-top-width: 7px;
+    border-bottom-width: 7px;
+    border-left-color: rgba(0, 0, 0, 255);
+    border-right-color: rgba(0, 0, 0, 255);
+    border-top-color: rgba(0, 0, 0, 255);
+    border-bottom-color: rgba(0, 0, 0, 255);
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    background-color: rgba(165, 165, 55, 255);
+    -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=20ebfd8a77b71b29c912f0db46e6df84&type=3#NotInter-Regular');
+    font-size: 200px;
+    color: rgba(0, 0, 0, 255);
+}
+
+.grayColor {
+    background-color: rgba(91, 91, 91, 255);
 }

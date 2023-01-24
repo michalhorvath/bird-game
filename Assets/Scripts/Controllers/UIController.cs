@@ -19,6 +19,8 @@ public class UIController : MonoBehaviour
     private VisualElement trainScreen;
     private VisualElement buyBirdScreen;
     private VisualElement newBirdScreen;
+    private VisualElement birdAlbumScreen;
+    private VisualElement birdDetailsScreen;
 
     private Button homeCoinsButton;
     private Button homeGemsButton;
@@ -28,6 +30,8 @@ public class UIController : MonoBehaviour
     private Button menuSettingsButton;
     private Button menuPhotoButton;
     private Button menuAlbumButton;
+    private Button birdAlbumBackButton;
+    private Button birdDetailsBackButton;
     private Button menuCatalogButton;
     private Button menuBackButton;
     private Button settingsBackButton;
@@ -71,6 +75,8 @@ public class UIController : MonoBehaviour
         trainScreen = document.rootVisualElement.Q<VisualElement>("TrainScreen");
         buyBirdScreen = document.rootVisualElement.Q<VisualElement>("BuyBirdScreen");
         newBirdScreen = document.rootVisualElement.Q<VisualElement>("NewBirdScreen");
+        birdAlbumScreen = document.rootVisualElement.Q<VisualElement>("BirdAlbumScreen");
+        birdDetailsScreen = document.rootVisualElement.Q<VisualElement>("BirdDetailsScreen");
         
         homeCoinsButton = document.rootVisualElement.Q<Button>("HomeCoinsButton");
         homeGemsButton = document.rootVisualElement.Q<Button>("HomeGemsButton");
@@ -80,6 +86,8 @@ public class UIController : MonoBehaviour
         menuSettingsButton = document.rootVisualElement.Q<Button>("MenuSettingsButton");
         menuPhotoButton = document.rootVisualElement.Q<Button>("MenuPhotoButton");
         menuAlbumButton = document.rootVisualElement.Q<Button>("MenuAlbumButton");
+        birdAlbumBackButton = document.rootVisualElement.Q<Button>("BirdAlbumBackButton");
+        birdDetailsBackButton = document.rootVisualElement.Q<Button>("BirdDetailsBackButton");
         menuCatalogButton = document.rootVisualElement.Q<Button>("MenuCatalogButton");
         menuBackButton = document.rootVisualElement.Q<Button>("MenuBackButton");
         settingsBackButton = document.rootVisualElement.Q<Button>("SettingsBackButton");
@@ -121,6 +129,21 @@ public class UIController : MonoBehaviour
         menuSettingsButton.clicked += () => {
             settingsScreen.style.display = DisplayStyle.Flex;
             menuScreen.style.display = DisplayStyle.None;
+        };
+
+        menuAlbumButton.clicked += () => {
+            birdAlbumScreen.style.display = DisplayStyle.Flex;
+            menuScreen.style.display = DisplayStyle.None;
+        };
+
+        birdAlbumBackButton.clicked += () => {
+            birdAlbumScreen.style.display = DisplayStyle.None;
+            menuScreen.style.display = DisplayStyle.Flex;
+        };
+
+        birdDetailsBackButton.clicked += () => {
+            birdAlbumScreen.style.display = DisplayStyle.Flex;
+            birdDetailsScreen.style.display = DisplayStyle.None;
         };
 
         settingsBackButton.clicked += () => {
