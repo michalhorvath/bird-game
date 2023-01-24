@@ -15,12 +15,14 @@ public class BuyBirdController : MonoBehaviour
     private Label newBirdNameLabel;
     private Label buyBirdInfoLabel;
 
+    [SerializeField] private CameraController mainCamera;
+
     void Awake(){
         document = GetComponent<UIDocument>();
 
         buyBirdBackButton = document.rootVisualElement.Q<Button>("BuyBirdBackButton");
         buyBirdConfirmButton = document.rootVisualElement.Q<Button>("BuyBirdConfirmButton");
-        newBirdContinueButton = document.rootVisualElement.Q<Button>("NewBirdContinueBut      ton");
+        newBirdContinueButton = document.rootVisualElement.Q<Button>("NewBirdContinueButton");
         shopBirdButton = document.rootVisualElement.Q<Button>("ShopBirdButton");
         newBirdNameLabel = document.rootVisualElement.Q<Label>("NewBirdNameLabel");
         buyBirdInfoLabel = document.rootVisualElement.Q<Label>("BuyBirdInfoLabel");
@@ -31,6 +33,10 @@ public class BuyBirdController : MonoBehaviour
 
         shopBirdButton.clicked += () => {
             reset();
+        };
+
+        newBirdContinueButton.clicked += () => {
+            mainCamera.changeCameraPosition(CameraState.Default);
         };
 
         BirdManager.OnBirdStateChanged += OnBirdStateChanged;
@@ -59,6 +65,7 @@ public class BuyBirdController : MonoBehaviour
 
     private void buyBird(){
         BirdManager.instance.buyNewBird();
+        mainCamera.changeCameraPosition(CameraState.Closeup);
     }
 
     private void OnBirdStateChanged(BirdState birdState){

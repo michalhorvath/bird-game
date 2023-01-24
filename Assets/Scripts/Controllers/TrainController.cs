@@ -21,6 +21,8 @@ public class TrainController : MonoBehaviour
 
     private Button birdTrainButton;
 
+    [SerializeField] private CameraController mainCamera;
+
     private int selectedSkill = 0;
 
     private int[] skillCost = {1, 2, 3, 4, 5};
@@ -42,7 +44,7 @@ public class TrainController : MonoBehaviour
         birdTrainButton = document.rootVisualElement.Q<Button>("BirdTrainButton");
 
         trainBackButton.clicked += () => {
-            reset();
+            mainCamera.changeCameraPosition(CameraState.Default);
         };
 
         trainSkill0Button.clicked += () => {
@@ -63,6 +65,7 @@ public class TrainController : MonoBehaviour
 
         birdTrainButton.clicked += () => {
             reset();
+            mainCamera.changeCameraPosition(CameraState.Closeup);
         };
     }
 
