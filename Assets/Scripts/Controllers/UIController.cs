@@ -328,11 +328,11 @@ public class UIController : MonoBehaviour
                 birdMenuOpenButton.style.display = DisplayStyle.None;
                 lootMenu.style.display = DisplayStyle.Flex;
                 if (LootManager.instance.previewLoot().isDuplicit){
-                    lootMenuPreviewItem.text = $"Item {LootManager.instance.previewLoot().itemID} (duplicit)";
                     lootMenuPreviewCoins.text = $"{LootManager.instance.previewLoot().coins+100} coins";
+                    lootMenuPreviewItem.text = $"{PredefinedData.itemNames[LootManager.instance.previewLoot().itemID]}\n(duplicit)";
                 } else {
                     lootMenuPreviewCoins.text = $"{LootManager.instance.previewLoot().coins} coins";
-                    lootMenuPreviewItem.text = $"Item {LootManager.instance.previewLoot().itemID}";
+                    lootMenuPreviewItem.text = $"{PredefinedData.itemNames[LootManager.instance.previewLoot().itemID]}";
                 }
                 homeSkipButton.style.display = DisplayStyle.None;
                 skipMenu.style.display = DisplayStyle.None;
