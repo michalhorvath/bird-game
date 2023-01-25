@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class BirdController : MonoBehaviour
 {
+    public Material bird0;
+    public Material bird1;
+    public Material bird2;
+    public Material bird3;
+    public Material bird4;
+
     void Awake(){
         BirdManager.OnBirdStateChanged += OnBirdStateChanged;
+        BirdManager.OnActiveBirdChanged += OnActiveBirdChanged;
         showBird();
     }
     
@@ -14,6 +21,7 @@ public class BirdController : MonoBehaviour
 
     void OnDestroy(){
         BirdManager.OnBirdStateChanged -= OnBirdStateChanged;
+        BirdManager.OnActiveBirdChanged -= OnActiveBirdChanged;
     }
 
     void Update(){
@@ -30,6 +38,26 @@ public class BirdController : MonoBehaviour
                 break;
             case BirdState.GotLoot:
                 showBird();
+                break;
+        }
+    }
+
+    private void OnActiveBirdChanged(int activeBirdID){
+        switch (activeBirdID){
+            case 0:
+                GetComponent<MeshRenderer>().material = bird0;
+                break;
+            case 1:
+                GetComponent<MeshRenderer>().material = bird1;
+                break;
+            case 2:
+                GetComponent<MeshRenderer>().material = bird2;
+                break;
+            case 3:
+                GetComponent<MeshRenderer>().material = bird3;
+                break;
+            case 4:
+                GetComponent<MeshRenderer>().material = bird4;
                 break;
         }
     }

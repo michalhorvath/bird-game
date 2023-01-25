@@ -22,6 +22,7 @@ public class BirdManager : MonoBehaviour
     void Start()
     {
         initBirdState();
+        initActiveBird();
     }
 
     void Update()
@@ -117,6 +118,11 @@ public class BirdManager : MonoBehaviour
             PlayerDataManager.activeBirdID = i;
             OnActiveBirdChanged?.Invoke(i);
         }
+    }
+    
+    private void initActiveBird(){
+        int activeBirdID = PlayerDataManager.activeBirdID;
+        setActiveBird(activeBirdID);
     }
 }
 
