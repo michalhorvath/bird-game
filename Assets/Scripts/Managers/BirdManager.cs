@@ -110,6 +110,7 @@ public class BirdManager : MonoBehaviour
             PlayerDataManager.activeBirdID = nextBird;
             PlayerDataManager.gems -= 4;
         }
+        setActiveBird(nextBird);
         return nextBird;
     }
 

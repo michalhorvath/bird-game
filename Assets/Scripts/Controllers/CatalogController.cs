@@ -13,7 +13,7 @@ public class CatalogController : MonoBehaviour
     private VisualElement homeScreen;
 
     private VisualElement itemCatalogCells;
-    private Button menuAlbumButton;
+    private Button menuCatalogButton;
 
     private Label itemDetailsNameLabel;
     private Label itemDetailsDescriptionLabel;
@@ -35,8 +35,8 @@ public class CatalogController : MonoBehaviour
         homeScreen =
             document.rootVisualElement.Q<VisualElement>("HomeScreen");
 
-        menuAlbumButton =
-            document.rootVisualElement.Q<Button>("MenuAlbumButton");
+        menuCatalogButton =
+            document.rootVisualElement.Q<Button>("MenuCatalogButton");
         itemCatalogCells =
             document.rootVisualElement.Q<VisualElement>("ItemCatalogCells");
 
@@ -55,7 +55,7 @@ public class CatalogController : MonoBehaviour
         itemDetailsPickButton =
             document.rootVisualElement.Q<Button>("ItemDetailsPickButton");
 
-        menuAlbumButton.clicked += () => {
+        menuCatalogButton.clicked += () => {
             reset();
         };
     }
