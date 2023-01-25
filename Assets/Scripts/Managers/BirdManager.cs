@@ -11,6 +11,8 @@ public class BirdManager : MonoBehaviour
     public static event Action<BirdState> OnBirdStateChanged;
 
     public static event Action<int> OnActiveBirdChanged;
+
+    public static event Action<string> OnBirdPetted;
     
     public static BirdManager instance;
 
@@ -57,8 +59,7 @@ public class BirdManager : MonoBehaviour
     }
 
     public void petBird() {
-        // TODO: implement
-        print("pet bird");
+        OnBirdPetted?.Invoke("ignore");
     }
 
     private DateTimeOffset getBirdArrivalTime(){
