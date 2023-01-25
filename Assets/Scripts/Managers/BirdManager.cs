@@ -101,13 +101,14 @@ public class BirdManager : MonoBehaviour
         return -1;
     }
 
-    public void buyNewBird(){
+    public int buyNewBird(){
         int nextBird = nextBirdAvailable();
         if (nextBird != -1){
             PlayerDataManager.getBirdData()[nextBird].isBought = true;
             PlayerDataManager.activeBirdID = nextBird;
             PlayerDataManager.gems -= 4;
         }
+        return nextBird;
     }
 
     public void setActiveBird(int i){

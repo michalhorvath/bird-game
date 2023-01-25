@@ -32,14 +32,14 @@ public class PlayerData
         this.birdState = BirdState.Ready;
 
         this.activeBirdID = 0;
-        this.birdData = new BirdData[5];
+        this.birdData = new BirdData[PredefinedData.birdCount];
         for(int i = 0; i < birdData.Length;  i++){
             birdData[i] = new BirdData();
             birdData[i].id = i;
         }
         birdData[0].isBought = true;
 
-        this.itemData = new ItemData[20];
+        this.itemData = new ItemData[PredefinedData.itemCount];
         for(int i = 0; i < itemData.Length;  i++){
             itemData[i] = new ItemData();
             itemData[i].id = i;

@@ -16,6 +16,7 @@ public class CatalogController : MonoBehaviour
     private Button menuAlbumButton;
 
     private Label itemDetailsNameLabel;
+    private Label itemDetailsDescriptionLabel;
     private Button itemDetailsCell;
     private Label itemDetailsSkill0Stars;
     private Label itemDetailsSkill1Stars;
@@ -41,6 +42,8 @@ public class CatalogController : MonoBehaviour
 
         itemDetailsNameLabel =
             document.rootVisualElement.Q<Label>("ItemDetailsNameLabel");
+        itemDetailsDescriptionLabel =
+            document.rootVisualElement.Q<Label>("ItemDetailsDescriptionLabel");
         itemDetailsCell =
             document.rootVisualElement.Q<Button>("ItemDetailsCell");
         itemDetailsSkill0Stars =
@@ -97,5 +100,9 @@ public class CatalogController : MonoBehaviour
 
     private void resetItemDetail(ItemData itemData){
         itemDetailsCell.text = ""+itemData.id;
+        itemDetailsNameLabel.text =
+            $"<u>{PredefinedData.itemNames[itemData.id]}</u>";
+        itemDetailsDescriptionLabel.text =
+            PredefinedData.itemDescriptions[itemData.id];
     }
 }

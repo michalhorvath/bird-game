@@ -58,6 +58,7 @@ public class AlbumController : MonoBehaviour
     }
 
     void Start(){
+        reset();
     }
 
     private void reset(){
@@ -102,6 +103,8 @@ public class AlbumController : MonoBehaviour
             new String('★', birdData.skills[1]);
         birdDetailsSkill2Stars.text =
             new String('★', birdData.skills[2]);
+        birdDetailsNameLabel.text = 
+            $"<u>{PredefinedData.birdNames[birdData.id]}</u>";
         birdDetailsPickButton.clickable = null;
         birdDetailsPickButton.RemoveFromClassList("grayColor");
         if (BirdManager.instance.state == BirdState.Ready){

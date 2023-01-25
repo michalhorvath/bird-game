@@ -126,7 +126,7 @@
         <ui:Button text="X" display-tooltip-when-elided="true" name="BirdAlbumBackButton" enable-rich-text="true" class="button backButton" />
     </ui:VisualElement>
     <ui:VisualElement name="BirdDetailsScreen" class="hideBackground" style="flex-grow: 1; justify-content: center; align-items: center; display: none;">
-        <ui:VisualElement class="popupBackground" style="background-color: rgb(46, 46, 46);">
+        <ui:VisualElement class="popupBackground" style="background-color: rgb(46, 46, 46); width: 95%;">
             <ui:VisualElement style="flex-direction: row; justify-content: center; padding-left: 50px; padding-right: 50px; padding-top: 50px; padding-bottom: 50px;">
                 <ui:Button text="?" display-tooltip-when-elided="true" name="BirdDetailsCell" class="albumCell" />
                 <ui:Label tabindex="-1" text="&lt;u&gt;Rocky&lt;/u&gt; " display-tooltip-when-elided="true" name="BirdDetailsNameLabel" class="popupLabelBig" />
@@ -165,13 +165,13 @@
         <ui:Button text="X" display-tooltip-when-elided="true" name="ItemCatalogBackButton" enable-rich-text="true" class="button backButton" />
     </ui:VisualElement>
     <ui:VisualElement name="ItemDetailsScreen" class="hideBackground" style="flex-grow: 1; justify-content: center; align-items: center; display: none;">
-        <ui:VisualElement class="popupBackground" style="background-color: rgb(46, 46, 46);">
-            <ui:VisualElement style="flex-direction: row; justify-content: center; padding-left: 50px; padding-right: 50px; padding-top: 50px; padding-bottom: 50px;">
+        <ui:VisualElement class="popupBackground" style="background-color: rgb(46, 46, 46); width: 95%;">
+            <ui:VisualElement style="flex-direction: row; justify-content: center; padding-left: 50px; padding-right: 50px; padding-top: 50px; padding-bottom: 50px; align-items: center;">
                 <ui:Button text="?" display-tooltip-when-elided="true" name="ItemDetailsCell" class="albumCell" />
-                <ui:Label tabindex="-1" text="&lt;u&gt;Chair&lt;/u&gt; " display-tooltip-when-elided="true" name="ItemDetailsNameLabel" class="popupLabelBig" />
+                <ui:Label tabindex="-1" text="&lt;u&gt;Chair&lt;/u&gt; " display-tooltip-when-elided="true" name="ItemDetailsNameLabel" class="popupLabel" style="flex-wrap: nowrap;" />
             </ui:VisualElement>
             <ui:VisualElement style="align-items: center; margin-top: 50px; margin-bottom: 50px;">
-                <ui:Label tabindex="-1" text="Usefull for sitting!" display-tooltip-when-elided="true" class="popupLabelSmall" />
+                <ui:Label tabindex="-1" text="Usefull for sitting!" display-tooltip-when-elided="true" name="ItemDetailsDescriptionLabel" class="popupLabelSmall" style="flex-wrap: nowrap; overflow: visible; -unity-text-align: upper-center;" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:Button text="X" display-tooltip-when-elided="true" name="ItemDetailsBackButton" enable-rich-text="true" class="button backButton" />

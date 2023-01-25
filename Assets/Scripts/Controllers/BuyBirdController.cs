@@ -64,8 +64,9 @@ public class BuyBirdController : MonoBehaviour
     }
 
     private void buyBird(){
-        BirdManager.instance.buyNewBird();
+        int i = BirdManager.instance.buyNewBird();
         mainCamera.changeCameraPosition(CameraState.Closeup);
+        newBirdNameLabel.text=$"<u>{PredefinedData.birdNames[i]}</u>";
     }
 
     private void OnBirdStateChanged(BirdState birdState){
